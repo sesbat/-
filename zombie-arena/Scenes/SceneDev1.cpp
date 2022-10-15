@@ -128,7 +128,7 @@ void SceneDev1::Exit()
 	player->Reset();
 	bullets.Reset();
 
-	FindGameObj("ItemGenerator")->Reset();
+	//FindGameObj("ItemGenerator")->Reset();
 
 	uiMgr->Reset();
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "SpriteObj.h"
 #include <SFML/Graphics.hpp>
 
@@ -30,6 +31,8 @@ protected:
 
 	VertexArrayObj* background;
 	Player* player;
+
+	std::list<SpriteObj> Blood;
 
 public:
 	Zombie();

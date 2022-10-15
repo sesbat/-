@@ -65,6 +65,10 @@ void Zombie::Update(float dt)
 void Zombie::Draw(RenderWindow& window)
 {
 	window.draw(hpBar);
+	for (auto it : Blood)
+	{
+		it.Draw(window);
+	}
 
 	SpriteObj::Draw(window);
 }
@@ -129,4 +133,12 @@ Zombie::Types Zombie::GetType() const
 void Zombie::OnHitBullet(int Damage)
 {
 	hp -= Damage;
+
+	SpriteObj blood;
+	blood.SetTexture(*RESOURCE_MGR->GetTexture("graphics/blood.png"));
+	blood.SetActive(true);
+	blood.SetPos(position);
+	blood.SetOrigin(Origins::MC);
+
+	Blood.push_back(blood);
 }
