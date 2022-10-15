@@ -14,7 +14,7 @@ Zombie::Zombie()
 	hpBarSize.y = 5;
 	hpBar.setSize({ hpBarSize.x ,hpBarSize.y });
 	hpBar.setFillColor(Color::Red);
-	hpBar.setPosition({-1000,1000});
+	hpBar.setPosition({ 1000,1000});
 }
 
 Zombie::~Zombie()
@@ -108,10 +108,7 @@ void Zombie::Reset()
 
 	dir = { 1, 0 };
 	hp = maxHp;
-
-	//dir = Utils::Normalize(player->GetPos() - GetPos());
-	//float degree = atan2(dir.y, dir.x) * (180 / M_PI);
-	//sprite.setRotation(degree);
+	Blood.clear();
 	SetPos(position);
 }
 
