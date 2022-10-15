@@ -20,6 +20,7 @@ public:
 
 	Vector2f GetSize()const;
 	FloatRect GetGlobalBounds() const;
+	Sprite GetSprite() { return sprite; }
 	virtual void SetPos(const Vector2f& pos) override;
 
 };

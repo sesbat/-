@@ -76,14 +76,6 @@ void Bullet::Update(float dt)
 				{
 					zombie->OnHitBullet(GetDamage());
 					SetActive(false);
-					if (zombie->GetHp() <= 0)
-					{
-						
-						(*zombie).SetActive(false);
-
-						
-						SOUND_MGR->Play("sound/splat.wav", false);
-					}
 					break;
 				}
 			}

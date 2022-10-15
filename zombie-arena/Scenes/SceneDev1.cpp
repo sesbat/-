@@ -57,7 +57,6 @@ void SceneDev1::Init()
 	bullets.Init();
 
 
-
 	//ItemGenerator* itemGen = new ItemGenerator();
 	//itemGen->SetName("ItemGenerator");
 	//AddGameObj(itemGen);
@@ -142,6 +141,10 @@ void SceneDev1::Update(float dt)
 	{
 		exit(1);
 	}
+	if (InputMgr::GetKeyDown(Keyboard::P))
+	{
+		CreateBarricade();
+	}
 	
 	for (auto& v : zombies) {
 		if (v->GetActive()) {
@@ -156,6 +159,13 @@ void SceneDev1::Update(float dt)
 	{
 		
 	}*/
+		for (auto zombie : zombies)
+		{
+			if (barricade != nullptr&&zombie->GetGlobalBounds().intersects(barricade->GetSprite().getGlobalBounds()))
+			{
+				zombie->OnHitBarricade(10,dt);
+			}
+		}
 	bullets.Update(dt);
 	uiMgr->Update(dt);
 }
@@ -248,4 +258,14 @@ void SceneDev1::CreateZombies(int count)
 		objList.push_back(zombie);
 		zombies.push_back(zombie);
 	}
+}
+
+
+void SceneDev1::CreateBarricade()
+{
+	barricade = new SpriteObj();
+	barricade->SetTexture(*GetTexture("graphics/barricade.png"));
+	barricade->SetPos(player->GetPos());
+	barricade->SetOrigin(Origins::MC);
+	objList.push_back(barricade);
 }

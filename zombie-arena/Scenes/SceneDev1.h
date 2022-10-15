@@ -16,6 +16,7 @@ protected:
 	Player* player;
 	list<Zombie*> zombies;
 	SpriteObj* cursor;
+	SpriteObj* barricade;
 
 	ObjectPool<Bullet> bullets;
 
@@ -34,6 +35,7 @@ public:
 
 	void CreateBackground(int cols, int rows, float quadWidth, float quadHeight);
 	void CreateZombies(int count);
+	void CreateBarricade();
 
 	list<Zombie*>* GetZombieList() { return &zombies; }
 };

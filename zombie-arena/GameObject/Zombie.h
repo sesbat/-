@@ -23,6 +23,7 @@ protected:
 	Vector2f dir;
 	float speed;
 	float startDelay=3.f;
+	float delay = 2.f;
 	
 	int maxHp;
 	int hp;
@@ -53,6 +54,7 @@ public:
 	Types GetType() const;
 
 	void OnHitBullet(int Damage);
+	void OnHitBarricade(int Damage,float dt);
 	bool GetFalse() { return enabled; }
 };
 
