@@ -9,11 +9,11 @@ using namespace sf;
 Zombie::Zombie()
 	:hp(100)
 {
-	hpBarSize.x = hp/2;
+	hpBarSize.x = hp / 2;
 	hpBarSize.y = 5;
 	hpBar.setSize({ hpBarSize.x ,hpBarSize.y });
 	hpBar.setFillColor(Color::Red);
-	hpBar.setPosition({ GetPos().x,GetPos().y - 50 });
+	hpBar.setPosition({ 1000,1000});
 }
 
 Zombie::~Zombie()
@@ -26,41 +26,42 @@ void Zombie::Update(float dt)
 
 	startDelay -= dt;
 	dir = Utils::Normalize(player->GetPos() - GetPos());
-	
-	float border = 50.f;
-	FloatRect wallBound = background->GetGlobalBounds();
-	Vector2f pos;
-	pos.x = Utils::Clamp(position.x,
-		wallBound.left + border,
-		wallBound.left + wallBound.width - border);
-	pos.y = Utils::Clamp(position.y,
-		wallBound.top + border,
-		wallBound.top + wallBound.height - border);
-	if (pos != position)
-	{
-		SetPos(pos);
-	}
-	Translate(dir * speed* dt);
+	if (startDelay <= 0) {
+		float border = 50.f;
+		FloatRect wallBound = background->GetGlobalBounds();
+		Vector2f pos;
+		pos.x = Utils::Clamp(position.x,
+			wallBound.left + border,
+			wallBound.left + wallBound.width - border);
+		pos.y = Utils::Clamp(position.y,
+			wallBound.top + border,
+			wallBound.top + wallBound.height - border);
+		if (pos != position)
+		{
+			SetPos(pos);
+		}
+		Translate(dir * speed * dt);
 
-	float distance = Utils::Distance(player->GetPos(), GetPos());
-	if (distance < speed * dt * 0.5f)
-	{
-		SetPos(player->GetPos());
-	}
-	else
-	{
-		float degree = atan2(dir.y, dir.x) * (180 / M_PI);
-		sprite.setRotation(degree);
-	}
+		float distance = Utils::Distance(player->GetPos(), GetPos());
+		if (distance < speed * dt * 0.5f)
+		{
+			SetPos(player->GetPos());
+		}
+		else
+		{
+			float degree = atan2(dir.y, dir.x) * (180 / M_PI);
+			sprite.setRotation(degree);
+		}
 
-	// �÷��̾� �浹
-	if (GetGlobalBounds().intersects(player->GetGlobalBounds()))
-	{
-		player->OnHitZombie(this);
+		// �÷��̾� �浹
+		if (GetGlobalBounds().intersects(player->GetGlobalBounds()))
+		{
+			player->OnHitZombie(this);
+		}
+		hpBarSize.x = hp;
+		hpBar.setSize({ hpBarSize.x ,hpBarSize.y });
+		hpBar.setPosition({ GetPos().x - hp / 2,GetPos().y - 50 });
 	}
-	hpBarSize.x = hp;
-	hpBar.setSize({ hpBarSize.x ,hpBarSize.y });
-	hpBar.setPosition({ GetPos().x-hp/2,GetPos().y - 50 });
 }
 
 void Zombie::Draw(RenderWindow& window)
@@ -70,7 +71,7 @@ void Zombie::Draw(RenderWindow& window)
 	{
 		it.Draw(window);
 	}
-	if(startDelay<0.f)
+	if (startDelay < 0.f)
 	{
 		window.draw(hpBar);
 		SpriteObj::Draw(window);
@@ -110,7 +111,7 @@ void Zombie::SetType(Types t)
 	{
 	case Zombie::Types::Bloater:
 		SetTexture(*resMgr->GetTexture("graphics/bloater.png"));
-		speed = 40 ;
+		speed = 40;
 		maxHp = 100;
 		break;
 	case Zombie::Types::Chaser:
