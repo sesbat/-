@@ -97,10 +97,7 @@ void Zombie::Reset()
 
 	dir = { 1, 0 };
 	hp = maxHp;
-
-	//dir = Utils::Normalize(player->GetPos() - GetPos());
-	//float degree = atan2(dir.y, dir.x) * (180 / M_PI);
-	//sprite.setRotation(degree);
+	Blood.clear();
 	SetPos(position);
 }
 
