@@ -162,6 +162,7 @@ void Zombie::OnHitBullet(int Damage)
 
 void Zombie::OnHitBarricade(int Damage,float dt)
 {
+	trapped = true;
 	delay -= dt;
 	if(delay<=0.f)
 	{

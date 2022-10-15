@@ -22,6 +22,7 @@ protected:
 
 	Vector2f dir;
 	float speed;
+	bool trapped;
 	float startDelay=3.f;
 	float delay = 2.f;
 	
@@ -53,6 +54,7 @@ public:
 	void SetType(Types t);
 	Types GetType() const;
 
+	void SetTrapped(bool a) { this->trapped = a; }
 	void OnHitBullet(int Damage);
 	void OnHitBarricade(int Damage,float dt);
 	bool GetFalse() { return enabled; }
