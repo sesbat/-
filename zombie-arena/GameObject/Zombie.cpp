@@ -60,12 +60,12 @@ void Zombie::Update(float dt)
 	hpBarSize.x = hp;
 	hpBar.setSize({ hpBarSize.x ,hpBarSize.y });
 	hpBar.setPosition({ GetPos().x-hp/2,GetPos().y - 50 });
-	
 }
 
 void Zombie::Draw(RenderWindow& window)
 {
 	window.draw(hpBar);
+
 	SpriteObj::Draw(window);
 }
 

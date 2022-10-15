@@ -63,6 +63,7 @@ void Bullet::Update(float dt)
 	{
 		SetActive(false);
 	}
+
 	else
 	{
 		for (Zombie* zombie : *zombies)
@@ -73,12 +74,11 @@ void Bullet::Update(float dt)
 				{
 					zombie->OnHitBullet(GetDamage());
 					SetActive(false);
-					break;
-				}
-				if (zombie->GetHp() <= 0)
-				{
-					zombie->SetActive(false);
-					//죽는 이펙트 or 소리
+					if (zombie->GetHp() <= 0)
+					{
+						zombie->SetActive(false);
+						//죽는 이펙트 or 소리
+					}
 					break;
 				}
 			}
