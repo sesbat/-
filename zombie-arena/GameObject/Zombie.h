@@ -50,5 +50,6 @@ public:
 	Types GetType() const;
 
 	void OnHitBullet(int Damage);
+	bool GetFalse() { return enabled; }
 };
 
