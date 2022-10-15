@@ -9,6 +9,7 @@
 #include "Zombie.h"
 #include "../Scenes/SceneMgr.h"
 #include "../UI/UiDev1Mgr.h"
+#include "../Framework/SoundMgr.h"
 
 Player::Player()
 	: speed(500), accelation(1000), deaccelation(1000), bulletPool(nullptr),
@@ -228,6 +229,8 @@ void Player::Fire()
 	fireTimer = 0.f;
 
 	cout << currentAmmo << " / " << magazineSize << "  " << ammo << endl;
+	SOUND_MGR->Play("sound/shoot.wav", false);
+
 }
 
 void Player::Reload()
@@ -246,6 +249,8 @@ void Player::Reload()
 
 	cout << "Reload Start" << endl;
 	cout << currentAmmo << " / " << magazineSize << "  " << ammo << endl;
+	SOUND_MGR->Play("sound/reload.wav", false);
+
 }
 
 void Player::OnPickupItem(Pickup* item)

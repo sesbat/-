@@ -2,6 +2,7 @@
 #include "../Framework/Utils.h"
 #include "Zombie.h"
 #include "VertexArrayObj.h"
+#include "../Framework/SoundMgr.h"
 
 Bullet::Bullet()
 	: dir(), speed(0.f), range(0.f)
@@ -77,7 +78,7 @@ void Bullet::Update(float dt)
 					if (zombie->GetHp() <= 0)
 					{
 						zombie->SetActive(false);
-						//죽는 이펙트 or 소리
+						SOUND_MGR->Play("sound/splat.wav", false);
 					}
 					break;
 				}
