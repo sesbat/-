@@ -56,7 +56,7 @@ void Bullet::Update(float dt)
 	//SetPos(position + dir * dt * speed);
 	float border = 50.f;
 	FloatRect wallBound = background->GetGlobalBounds();
-	
+
 	Translate(dir * dt * speed);
 	range -= Utils::Magnitude(dir * dt * speed);
 
@@ -69,7 +69,8 @@ void Bullet::Update(float dt)
 	{
 		for (Zombie* zombie : *zombies)
 		{
-			if (zombie->GetActive())
+			(*zombie).GetActive();
+			if ((*zombie).GetActive())
 			{
 				if (GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
 				{
@@ -77,7 +78,10 @@ void Bullet::Update(float dt)
 					SetActive(false);
 					if (zombie->GetHp() <= 0)
 					{
-						zombie->SetActive(false);
+						
+						(*zombie).SetActive(false);
+
+						
 						SOUND_MGR->Play("sound/splat.wav", false);
 					}
 					break;
@@ -85,6 +89,7 @@ void Bullet::Update(float dt)
 			}
 		}
 	}
+
 	Vector2f pos;
 	pos.x = Utils::Clamp(position.x,
 		wallBound.left + border,

@@ -14,6 +14,7 @@ protected:
 	int Damage = 5;
 	std::list<Zombie*>* zombies;
 	VertexArrayObj* background;
+	
 public:
 	Bullet();
 	~Bullet();
@@ -29,5 +30,7 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(RenderWindow& window) override;
+
+	
 };
 

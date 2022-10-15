@@ -24,6 +24,7 @@ void Zombie::Update(float dt)
 {
 	SpriteObj::Update(dt);
 
+	startDelay -= dt;
 	dir = Utils::Normalize(player->GetPos() - GetPos());
 	
 	float border = 50.f;
@@ -69,8 +70,11 @@ void Zombie::Draw(RenderWindow& window)
 	{
 		it.Draw(window);
 	}
-
-	SpriteObj::Draw(window);
+	if(startDelay<0.f)
+	{
+		window.draw(hpBar);
+		SpriteObj::Draw(window);
+	}
 }
 
 

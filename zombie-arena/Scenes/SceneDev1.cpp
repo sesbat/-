@@ -58,8 +58,8 @@ void SceneDev1::Init()
 
 
 
-	ItemGenerator* itemGen = new ItemGenerator();
-	itemGen->SetName("ItemGenerator");
+	//ItemGenerator* itemGen = new ItemGenerator();
+	//itemGen->SetName("ItemGenerator");
 	//AddGameObj(itemGen);
 
 	for (auto obj : objList)
@@ -110,7 +110,7 @@ void SceneDev1::Enter()
 	uiView.setCenter(size.x * 0.5f, size.y * 0.5f);
 
 	player->SetPos( { 0, 0 });
-	CreateZombies(10);
+	CreateZombies(1);
 }
 
 void SceneDev1::Exit()
@@ -142,11 +142,20 @@ void SceneDev1::Update(float dt)
 	{
 		exit(1);
 	}
-	if (InputMgr::GetKeyDown(Keyboard::Space))
-	{
-		SCENE_MGR->ChangeScene(Scenes::Dev2);
-		return;
+	
+	for (auto& v : zombies) {
+		if (v->GetActive()) {
+			break;
+		}
+		else if (!v->GetActive() && v == zombies.back()) {
+			SCENE_MGR->ChangeScene(Scenes::Dev2);
+			return;
+		}
 	}
+	/*if (!(bullets.Get()->IsClear()))
+	{
+		
+	}*/
 	bullets.Update(dt);
 	uiMgr->Update(dt);
 }
