@@ -15,8 +15,6 @@ UiDev1Mgr::~UiDev1Mgr()
 
 void UiDev1Mgr::Init()
 {
-
-
 	textScore = new TextObj();
 	textScore->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
 	textScore->GetSfmlText().setCharacterSize(75);

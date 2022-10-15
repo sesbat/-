@@ -2,12 +2,12 @@
 #include "Scene.h"
 #include "../GameObject/Object.h"
 
+class SpriteObj;
 class Object;
 class SceneDev2 : public Scene
 {
 protected:
-	Object* obj1;
-	Object* obj2;
+
 
 public:
 	SceneDev2();
