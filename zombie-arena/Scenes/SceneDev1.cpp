@@ -58,8 +58,8 @@ void SceneDev1::Init()
 
 
 
-	ItemGenerator* itemGen = new ItemGenerator();
-	itemGen->SetName("ItemGenerator");
+	//ItemGenerator* itemGen = new ItemGenerator();
+	//itemGen->SetName("ItemGenerator");
 	//AddGameObj(itemGen);
 
 	for (auto obj : objList)
@@ -128,7 +128,7 @@ void SceneDev1::Exit()
 	player->Reset();
 	bullets.Reset();
 
-	FindGameObj("ItemGenerator")->Reset();
+	//FindGameObj("ItemGenerator")->Reset();
 
 	uiMgr->Reset();
 }

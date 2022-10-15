@@ -85,6 +85,7 @@ void Bullet::Update(float dt)
 			}
 		}
 	}
+
 	Vector2f pos;
 	pos.x = Utils::Clamp(position.x,
 		wallBound.left + border,

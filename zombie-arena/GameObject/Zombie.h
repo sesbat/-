@@ -21,6 +21,7 @@ protected:
 
 	Vector2f dir;
 	float speed;
+	float startDelay=3.f;
 	
 	int maxHp;
 	int hp;
