@@ -165,6 +165,9 @@ void SceneDev1::Update(float dt)
 			{
 				zombie->OnHitBarricade(10,dt);
 			}
+			else {
+				zombie->SetTrapped(false);
+			}
 		}
 	bullets.Update(dt);
 	uiMgr->Update(dt);

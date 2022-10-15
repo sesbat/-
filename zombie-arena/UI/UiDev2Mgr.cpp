@@ -118,6 +118,5 @@ int UiDev2Mgr::GetShopChoice()
 
 void UiDev2Mgr::SetGold(int gold)
 {
-	gold = 0;
 	textGold->SetText(formatGold + to_string(gold));
 }

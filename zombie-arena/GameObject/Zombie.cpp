@@ -44,7 +44,12 @@ void Zombie::Update(float dt)
 		{
 			SetPos(pos);
 		}
-		Translate(dir * speed * dt);
+
+		if (!trapped) {
+			Translate(dir * speed * dt);
+		}
+		else
+			Translate(dir * speed/2.f * dt);
 
 		float distance = Utils::Distance(player->GetPos(), GetPos());
 		if (distance < speed * dt * 0.5f)
