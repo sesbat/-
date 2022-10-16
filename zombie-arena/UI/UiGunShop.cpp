@@ -111,13 +111,22 @@ void UiGunShop::Update(float dt)
 	cursor->SetPos(worldMousePos);
 	SetGold(0);
 
-	// test
-	if (InputMgr::GetKeyDown(Keyboard::A))
+	
+	// MouseClick +, -
+	if (InputMgr::GetMouseButton(Mouse::Left))
 	{
-		addMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/addClick.png"));
-		subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minusClick.png"));
+		if (cursor->GetPos().y >= addMag->GetPos().y - 50 && cursor->GetPos().y <= addMag->GetPos().y + 50 &&
+			cursor->GetPos().x >= addMag->GetPos().x - 50 && cursor->GetPos().x <= addMag->GetPos().x + 50)
+		{
+				addMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/addClick.png"));
+		}
+		if (cursor->GetPos().y >= subMag->GetPos().y - 50 && cursor->GetPos().y <= subMag->GetPos().y + 50 &&
+			cursor->GetPos().x >= subMag->GetPos().x - 50 && cursor->GetPos().x <= subMag->GetPos().x + 50)
+		{
+				subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minusClick.png"));
+		}
 	}
-	if (InputMgr::GetKeyDown(Keyboard::X))
+	if (InputMgr::GetMouseButtonUp(Mouse::Left))
 	{
 		addMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/add.png"));
 		subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minus.png"));
