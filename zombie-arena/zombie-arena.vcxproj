@@ -159,6 +159,7 @@
     <ClCompile Include="GameObject\Object.cpp" />
     <ClCompile Include="GameObject\Player.cpp" />
     <ClCompile Include="GameObject\Pickup.cpp" />
+    <ClCompile Include="Scenes\SceneGunShop.cpp" />
     <ClCompile Include="Scenes\SceneDev1.cpp" />
     <ClCompile Include="Scenes\SceneDev2.cpp" />
     <ClCompile Include="Scenes\Scene.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Framework\SoundMgr.cpp" />
     <ClCompile Include="GameObject\VertexArrayObj.cpp" />
     <ClCompile Include="GameObject\Zombie.cpp" />
+    <ClCompile Include="UI\UiGunShop.cpp" />
     <ClCompile Include="UI\UiDev2Mgr.cpp" />
     <ClCompile Include="UI\UiDev1Mgr.cpp" />
     <ClCompile Include="UI\UiMgr.cpp" />
@@ -188,6 +190,7 @@
     <ClInclude Include="GameObject\Player.h" />
     <ClInclude Include="GameObject\Pickup.h" />
     <ClInclude Include="GameObject\ItemGenerator.h" />
+    <ClInclude Include="Scenes\SceneGunShop.h" />
     <ClInclude Include="Scenes\SceneDev1.h" />
     <ClInclude Include="Scenes\SceneDev2.h" />
     <ClInclude Include="Scenes\Scene.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="Framework\SoundMgr.h" />
     <ClInclude Include="GameObject\VertexArrayObj.h" />
     <ClInclude Include="GameObject\Zombie.h" />
+    <ClInclude Include="UI\UiGunShop.h" />
     <ClInclude Include="UI\UiDev2Mgr.h" />
     <ClInclude Include="UI\UiDev1Mgr.h" />
     <ClInclude Include="UI\UiMgr.h" />

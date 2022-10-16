@@ -1,11 +1,13 @@
 #include "SceneMgr.h"
 #include "SceneDev1.h"
 #include "SceneDev2.h"
+#include "SceneGunShop.h"
 
 bool SceneMgr::Init()
 {
     sceneMap[Scenes::Dev1] = new SceneDev1();
     sceneMap[Scenes::Dev2] = new SceneDev2();
+    sceneMap[Scenes::GunShop] = new SceneGunShop();
     currScene = Scenes::Dev1;
 
     for (auto pair : sceneMap)

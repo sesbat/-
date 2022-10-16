@@ -15,7 +15,8 @@ public:
 	virtual void Draw(RenderWindow& window) override;
 
 	void SetFont(Font& font);
-	void SetText(string text);
+	void SetText(string str);
+	void SetAll(Font& font, string str, int size, Color color, Vector2f pos);
 	const string& GetText() const;
 };
 

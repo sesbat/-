@@ -74,16 +74,11 @@ void SceneDev2::Update(float dt)
 		exit(1);
 	}
 
-	if (InputMgr::GetKeyDown(Keyboard::Space))
-	{
-		SCENE_MGR->ChangeScene(Scenes::Dev1);
-	}
-
 	if (InputMgr::GetMouseButtonDown(Mouse::Button::Left))
 	{
 		if (UiDev2Mgr::GetShopChoice() == 0)
 		{
-			SCENE_MGR->ChangeScene(Scenes::Dev1);
+			SCENE_MGR->ChangeScene(Scenes::GunShop);
 		}
 		else if (UiDev2Mgr::GetShopChoice() == 1)
 		{

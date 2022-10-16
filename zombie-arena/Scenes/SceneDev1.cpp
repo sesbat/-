@@ -145,7 +145,11 @@ void SceneDev1::Update(float dt)
 	{
 		CreateBarricade();
 	}
-	
+	if (InputMgr::GetKeyDown(Keyboard::Space))
+	{
+		SCENE_MGR->ChangeScene(Scenes::Dev2);
+	}
+
 	for (auto& v : zombies) {
 		if (v->GetActive()) {
 			break;

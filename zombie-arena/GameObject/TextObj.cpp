@@ -23,6 +23,15 @@ void TextObj::SetText(string str)
 	text.setString(str);
 }
 
+void TextObj::SetAll(Font& font, string str, int size, Color color, Vector2f pos)
+{
+	text.setFont(font);
+	text.setString(str);
+	text.setCharacterSize(size);
+	text.setFillColor(color);
+	text.setPosition(pos);
+}
+
 const string& TextObj::GetText() const
 {
 	return text.getString();

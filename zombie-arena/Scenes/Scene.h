@@ -10,6 +10,7 @@ enum class Scenes
 {
 	Dev1,
 	Dev2,
+	GunShop,
 };
 
 class UiMgr;

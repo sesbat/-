@@ -62,6 +62,7 @@ void UiDev2Mgr::Init()
 	cursor->SetOrigin(Origins::MC);
 	uiObjList.push_back(cursor);
 
+
 	UiMgr::Init();
 }
 
