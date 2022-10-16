@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObject\Barricade.cpp" />
     <ClCompile Include="GameObject\Bullet.cpp" />
     <ClCompile Include="DataTable\DataTable.cpp" />
     <ClCompile Include="DataTable\DataTableMgr.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Framework\ResourceMgr.cpp" />
     <ClCompile Include="Framework\Utils.cpp" />
     <ClCompile Include="GameObject\ItemGenerator.cpp" />
+    <ClCompile Include="GameObject\Gun.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GameObject\Object.cpp" />
     <ClCompile Include="GameObject\Player.cpp" />
@@ -179,6 +181,7 @@
   <ItemGroup>
     <ClInclude Include="3rd\rapidcsv.h" />
     <ClInclude Include="3rd\Singleton.h" />
+    <ClInclude Include="GameObject\Barricade.h" />
     <ClInclude Include="Framework\ObjectPool.h" />
     <ClInclude Include="GameObject\Bullet.h" />
     <ClInclude Include="DataTable\DataTable.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="GameObject\Player.h" />
     <ClInclude Include="GameObject\Pickup.h" />
     <ClInclude Include="GameObject\ItemGenerator.h" />
+    <ClInclude Include="GameObject\Gun.h" />
     <ClInclude Include="Scenes\SceneETCShop.h" />
     <ClInclude Include="Scenes\SceneGunShop.h" />
     <ClInclude Include="Scenes\SceneDev1.h" />

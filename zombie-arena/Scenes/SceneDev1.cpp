@@ -13,6 +13,7 @@
 #include "../GameObject/Pickup.h"
 #include "../GameObject/ItemGenerator.h"
 #include "../UI/UiDev1Mgr.h"
+#include "../GameObject/Barricade.h"
 
 void OnCreateBullet(Bullet* bullet)
 {
@@ -52,6 +53,8 @@ void SceneDev1::Init()
 	player->SetBulletPool(&bullets);
 	player->SetBackground(background);
 	objList.push_back(player);
+
+
 
 	bullets.OnCreate = OnCreateBullet;
 	bullets.Init();
@@ -197,7 +200,7 @@ void SceneDev1::Update(float dt)
 	{
 		
 	}*/
-		for (auto zombie : zombies)
+		/*for (auto zombie : zombies)
 		{
 			if (barricade != nullptr&&zombie->GetGlobalBounds().intersects(barricade->GetSprite().getGlobalBounds()))
 			{
@@ -206,7 +209,20 @@ void SceneDev1::Update(float dt)
 			else {
 				zombie->SetTrapped(false);
 			}
+		}*/
+	for (auto zombie : zombies)
+	{
+		for(auto bar : barricades)
+		if (bar != nullptr && zombie->GetGlobalBounds().intersects(bar->GetSprite().getGlobalBounds()))
+		{
+			zombie->OnHitBarricade(10, dt);
+			bar->OnHitZombie(10,dt);
+			bar->SetActive(false);
 		}
+		else {
+			zombie->SetTrapped(false);
+		}
+	}
 		
 		
 	bullets.Update(dt);
@@ -222,6 +238,10 @@ void SceneDev1::Draw(RenderWindow& window)
 	for (auto bullet : bulletList)
 	{
 		bullet->Draw(window);
+	}
+	for (auto bar : barricades)
+	{
+		bar->Draw(window);
 	}
 	uiMgr->Draw(window);
 }
@@ -306,9 +326,11 @@ void SceneDev1::CreateZombies(int count)
 
 void SceneDev1::CreateBarricade()
 {
-	barricade = new SpriteObj();
-	barricade->SetTexture(*GetTexture("graphics/barricade.png"));
-	barricade->SetPos(player->GetPos());
-	barricade->SetOrigin(Origins::MC);
-	objList.push_back(barricade);
+	Barricade* temp = new Barricade();
+	temp->SetTexture(*GetTexture("graphics/barricade.png"));
+	temp->SetPos(player->GetPos());
+	temp->SetPlayer(player);
+	temp->SetOrigin(Origins::MC);
+	objList.push_back(temp);
+	barricades.push_back(temp);
 }
