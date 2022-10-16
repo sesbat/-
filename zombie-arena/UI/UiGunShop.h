@@ -9,6 +9,10 @@ protected:
 	string formatGold = "Gold  :  ";
 	TextObj* textGold;
 
+	//test
+	//string formatGold = "Magazine  :  ";
+	TextObj* textMagazine;
+
 	TextObj* pistolName;
 	TextObj* shotGunName;
 	TextObj* assaultName;
@@ -38,7 +42,5 @@ public:
 	void SetGold(int gold);
 
 	static int buyMagazine;
-	static void AddMagazine();
-	static void SubMagazine();
 };
 

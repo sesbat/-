@@ -51,6 +51,11 @@ void UiGunShop::Init()
 	textGold->GetSfmlText().setPosition({ 1350, 50 });
 	uiObjList.push_back(textGold);
 
+	/**************** Test Magazine Add, Sub ******************/
+	textMagazine = new TextObj();
+	textMagazine->SetAll(font, "Magazine : ", 50, Color::Black, {900, 900});
+	uiObjList.push_back(textMagazine);
+	/**********************************************************/
 	
 	pistolName = new TextObj();
 	pistolName->SetAll(font, "PISTOL", 40, Color::Black, {450, 60});
@@ -111,6 +116,9 @@ void UiGunShop::Update(float dt)
 	cursor->SetPos(worldMousePos);
 	SetGold(0);
 
+	/****************************** Test *****************************/
+	textMagazine->SetText("Magazine : " + to_string(buyMagazine));
+	/******************************************************************/
 	
 	// MouseClick +, -
 	if (InputMgr::GetMouseButton(Mouse::Left))
@@ -130,6 +138,14 @@ void UiGunShop::Update(float dt)
 	{
 		addMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/add.png"));
 		subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minus.png"));
+
+		if (cursor->GetPos().y >= addMag->GetPos().y - 50 && cursor->GetPos().y <= addMag->GetPos().y + 50 &&
+			cursor->GetPos().x >= addMag->GetPos().x - 50 && cursor->GetPos().x <= addMag->GetPos().x + 50)
+			buyMagazine++;
+
+		if (cursor->GetPos().y >= subMag->GetPos().y - 50 && cursor->GetPos().y <= subMag->GetPos().y + 50 &&
+			cursor->GetPos().x >= subMag->GetPos().x - 50 && cursor->GetPos().x <= subMag->GetPos().x + 50)
+			buyMagazine--;
 	}
 }
 
@@ -142,14 +158,4 @@ void UiGunShop::Draw(RenderWindow& window)
 void UiGunShop::SetGold(int gold)
 {
 	textGold->SetText(formatGold + to_string(gold));
-}
-
-void UiGunShop::AddMagazine()
-{
-	buyMagazine++;
-}
-
-void UiGunShop::SubMagazine()
-{
-	buyMagazine--;
 }
