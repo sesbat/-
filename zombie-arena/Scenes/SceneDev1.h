@@ -8,6 +8,7 @@ class VertexArrayObj;
 class Zombie;
 class Bullet;
 class SpriteObj;
+class Barricade;
 
 class SceneDev1 : public Scene
 {
@@ -17,6 +18,8 @@ protected:
 	list<Zombie*> zombies;
 	int zombieCount;
 	SpriteObj* cursor;
+
+	list<Barricade*> barricades;
 	SpriteObj* barricade;
 
 	
