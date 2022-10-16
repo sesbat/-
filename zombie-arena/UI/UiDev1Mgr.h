@@ -7,8 +7,8 @@ class UiDev1Mgr
 	:public UiMgr
 {
 protected:
-	string formatScore = "Score : "; // "Score : %d"
-	TextObj* textScore;
+	string ZombieCount = "Zombie Count :"; // "Score : %d"
+	TextObj* textZombieCount;
 	SpriteObj* cursor;
 public:
 	UiDev1Mgr(Scene* scene);
@@ -20,7 +20,7 @@ public:
 	virtual void Update(float dt);
 	virtual void Draw(RenderWindow& window);
 
-	void SetScore(int score);
+	void SetZombieCount(int count);
 
 };
 

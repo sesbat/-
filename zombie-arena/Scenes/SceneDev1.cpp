@@ -109,7 +109,9 @@ void SceneDev1::Enter()
 	uiView.setCenter(size.x * 0.5f, size.y * 0.5f);
 
 	player->SetPos( { 0, 0 });
-	CreateZombies(1);
+	CreateZombies(10);
+	zombieCount = zombies.size();
+	((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
 }
 
 void SceneDev1::Exit()
@@ -135,7 +137,27 @@ void SceneDev1::Exit()
 void SceneDev1::Update(float dt)
 {
 	Scene::Update(dt);
-	worldView.setCenter(player->GetPos());
+
+
+	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	
+
+	Vector2f dir;
+	dir.x = mouseworldPos.x - player->GetPos().x;
+	dir.y = mouseworldPos.y - player->GetPos().y;
+
+	float r = 0.5;
+	Vector2f camPoslen;
+	camPoslen.x= dir.x * r;
+	camPoslen.y = dir.y* r;
+
+
+	Vector2f realcam;
+	realcam.x = camPoslen.x + player->GetPos().x;
+	realcam.y = camPoslen.y + player->GetPos().y;
+
+	cout << realcam.x << " " << realcam.y << endl;
+
+	worldView.setCenter(realcam);
 
 	if (InputMgr::GetKeyDown(Keyboard::Escape))
 	{
@@ -149,6 +171,16 @@ void SceneDev1::Update(float dt)
 	{
 		SCENE_MGR->ChangeScene(Scenes::Dev2);
 	}
+	
+	zombieCount = zombies.size();
+	for (auto zombie : zombies)
+	{
+		if (!zombie->GetActive())
+		{
+			zombieCount--;
+			((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
+		}
+	}
 
 	for (auto& v : zombies) {
 		if (v->GetActive()) {
@@ -159,6 +191,7 @@ void SceneDev1::Update(float dt)
 			return;
 		}
 	}
+
 	/*if (!(bullets.Get()->IsClear()))
 	{
 		
@@ -173,6 +206,8 @@ void SceneDev1::Update(float dt)
 				zombie->SetTrapped(false);
 			}
 		}
+		
+		
 	bullets.Update(dt);
 	uiMgr->Update(dt);
 }
@@ -263,7 +298,7 @@ void SceneDev1::CreateZombies(int count)
 		zombie->SetBackground(background);
 		
 		objList.push_back(zombie);
-		zombies.push_back(zombie);
+		zombies.push_back(zombie);;
 	}
 }
 

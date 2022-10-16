@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+
     <ClCompile Include="GameObject\Bullet.cpp" />
     <ClCompile Include="DataTable\DataTable.cpp" />
     <ClCompile Include="DataTable\DataTableMgr.cpp" />
@@ -177,6 +178,7 @@
   <ItemGroup>
     <ClInclude Include="3rd\rapidcsv.h" />
     <ClInclude Include="3rd\Singleton.h" />
+    
     <ClInclude Include="Framework\ObjectPool.h" />
     <ClInclude Include="GameObject\Bullet.h" />
     <ClInclude Include="DataTable\DataTable.h" />

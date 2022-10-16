@@ -52,12 +52,6 @@ void Player::Reset()
 
 void Player::Update(float dt)
 {
-	if (InputMgr::GetKeyDown(Keyboard::Key::B))
-	{
-		((UiDev1Mgr*)uiMgr)->SetScore(Utils::RandomRange(0, 10000));
-	}
-
-
 	Scene* scene = SCENE_MGR->GetCurrScene();
 	SpriteObj::Update(dt);
 
