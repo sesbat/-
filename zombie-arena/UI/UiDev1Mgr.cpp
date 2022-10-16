@@ -15,11 +15,11 @@ UiDev1Mgr::~UiDev1Mgr()
 
 void UiDev1Mgr::Init()
 {
-	textScore = new TextObj();
-	textScore->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
-	textScore->GetSfmlText().setCharacterSize(75);
-	textScore->GetSfmlText().setPosition({ 50,50 });
-	uiObjList.push_back(textScore);
+	textZombieCount = new TextObj();
+	textZombieCount->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
+	textZombieCount->GetSfmlText().setCharacterSize(75);
+	textZombieCount->GetSfmlText().setPosition({ 50,50 });
+	uiObjList.push_back(textZombieCount);
 
 	cursor = new SpriteObj();
 	cursor->SetTexture(*RESOURCE_MGR->GetTexture("graphics/crosshair.png"));
@@ -38,12 +38,13 @@ void UiDev1Mgr::Release()
 void UiDev1Mgr::Reset()
 {
 	UiMgr::Reset();
-	SetScore(99999);
+	SetZombieCount(0);
 }
 
 void UiDev1Mgr::Update(float dt)
 {
 	UiMgr::Update(dt);
+
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
@@ -55,7 +56,7 @@ void UiDev1Mgr::Draw(RenderWindow& window)
 	UiMgr::Draw(window);
 }
 
-void UiDev1Mgr::SetScore(int score)
+void UiDev1Mgr::SetZombieCount(int count)
 {
-	textScore->SetText(formatScore + to_string(score));
-}
+	textZombieCount->SetText(ZombieCount + to_string(count));
+} 

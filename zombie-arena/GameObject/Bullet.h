@@ -11,8 +11,10 @@ protected:
 	float speed;
 	float range;
 
-	int Damage = 5;
 	std::list<Zombie*>* zombies;
+
+	int Damage = 5;
+	int ZombieCount;
 	VertexArrayObj* background;
 	
 public:

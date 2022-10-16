@@ -109,7 +109,9 @@ void SceneDev1::Enter()
 	uiView.setCenter(size.x * 0.5f, size.y * 0.5f);
 
 	player->SetPos( { 0, 0 });
-	CreateZombies(1);
+	CreateZombies(10);
+	zombieCount = zombies.size();
+	((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
 }
 
 void SceneDev1::Exit()
@@ -146,6 +148,15 @@ void SceneDev1::Update(float dt)
 		CreateBarricade();
 	}
 	
+	zombieCount = zombies.size();
+	for (auto zombie : zombies)
+	{
+		if (!zombie->GetActive())
+		{
+			zombieCount--;
+			((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
+		}
+	}
 	for (auto& v : zombies) {
 		if (v->GetActive()) {
 			break;
@@ -155,6 +166,7 @@ void SceneDev1::Update(float dt)
 			return;
 		}
 	}
+
 	/*if (!(bullets.Get()->IsClear()))
 	{
 		
@@ -169,6 +181,8 @@ void SceneDev1::Update(float dt)
 				zombie->SetTrapped(false);
 			}
 		}
+		
+		
 	bullets.Update(dt);
 	uiMgr->Update(dt);
 }
@@ -259,7 +273,7 @@ void SceneDev1::CreateZombies(int count)
 		zombie->SetBackground(background);
 		
 		objList.push_back(zombie);
-		zombies.push_back(zombie);
+		zombies.push_back(zombie);;
 	}
 }
 

@@ -15,8 +15,10 @@ protected:
 	VertexArrayObj* background;
 	Player* player;
 	list<Zombie*> zombies;
+	int zombieCount;
 	SpriteObj* cursor;
 	SpriteObj* barricade;
+
 
 	ObjectPool<Bullet> bullets;
 
