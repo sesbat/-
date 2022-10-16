@@ -134,13 +134,13 @@ void UiGunShop::Update(float dt)
 				subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minusClick.png"));
 		}
 	}
-	if (InputMgr::GetMouseButtonUp(Mouse::Left))
+	if (InputMgr::GetMouseButtonUp(Mouse::Left) )
 	{
 		addMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/add.png"));
 		subMag->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minus.png"));
 
 		if (cursor->GetPos().y >= addMag->GetPos().y - 50 && cursor->GetPos().y <= addMag->GetPos().y + 50 &&
-			cursor->GetPos().x >= addMag->GetPos().x - 50 && cursor->GetPos().x <= addMag->GetPos().x + 50)
+			cursor->GetPos().x >= addMag->GetPos().x - 50 && cursor->GetPos().x <= addMag->GetPos().x + 50 )
 			buyMagazine++;
 
 		if (cursor->GetPos().y >= subMag->GetPos().y - 50 && cursor->GetPos().y <= subMag->GetPos().y + 50 &&

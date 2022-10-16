@@ -4,6 +4,7 @@
 #include "../GameObject/VertexArrayObj.h"
 #include "../Framework/SoundMgr.h"
 #include "Bullet.h"
+#include "Player.h"
 const int Zombie::TotalTypes = 3;
 
 using namespace sf;
@@ -73,6 +74,7 @@ void Zombie::Update(float dt)
 
 		if (hp <= 0)
 		{
+			Player::SetMoney(5);
 			SetActive(false);
 			SOUND_MGR->Play("sound/splat.wav", false);
 		}
