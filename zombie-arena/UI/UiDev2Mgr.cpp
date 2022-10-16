@@ -3,7 +3,7 @@
 #include "../Scenes/SceneDev2.h"
 #include "../Framework/InputMgr.h"
 #include "../GameObject/Zombie.h"
-
+#include "../GameObject/Player.h"
 int UiDev2Mgr::shopChoice;
 
 UiDev2Mgr::UiDev2Mgr(Scene* scene)
@@ -75,10 +75,13 @@ void UiDev2Mgr::Reset()
 {
 	UiMgr::Reset();
 	SetGold(0);
+	
 }
 
 void UiDev2Mgr::Update(float dt)
 {
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
+
 	UiMgr::Update(dt);
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
@@ -119,5 +122,6 @@ int UiDev2Mgr::GetShopChoice()
 
 void UiDev2Mgr::SetGold(int gold)
 {
-	textGold->SetText(formatGold + to_string(gold));
+	
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
 }

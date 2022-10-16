@@ -54,6 +54,7 @@ protected:
 	float itemTimer;
 
 	static int mag;
+	static int money;
 
 public:
 	Player();
@@ -77,5 +78,7 @@ public:
 
 	int GetMagCount() { return mag; }
 	int GetCurrnetbulletCount() { return currentAmmo; }
+	static void SetMoney(int a) { money += a; }
+	static int GetMoney() { return money; }
 };
 

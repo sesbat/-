@@ -12,6 +12,8 @@
 #include "../Framework/SoundMgr.h"
 
 int Player::mag = 10;
+int Player::money = 0;
+
 
 Player::Player()
 	: speed(500), accelation(1000), deaccelation(1000), bulletPool(nullptr), reloadTime(1.5f), reloadTimer(0.f), isReloading(false),
