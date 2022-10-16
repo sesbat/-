@@ -155,6 +155,7 @@
     <ClCompile Include="Framework\ResourceMgr.cpp" />
     <ClCompile Include="Framework\Utils.cpp" />
     <ClCompile Include="GameObject\ItemGenerator.cpp" />
+    <ClCompile Include="GameObject\Gun.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GameObject\Object.cpp" />
     <ClCompile Include="GameObject\Player.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="GameObject\Player.h" />
     <ClInclude Include="GameObject\Pickup.h" />
     <ClInclude Include="GameObject\ItemGenerator.h" />
+    <ClInclude Include="GameObject\Gun.h" />
     <ClInclude Include="Scenes\SceneETCShop.h" />
     <ClInclude Include="Scenes\SceneGunShop.h" />
     <ClInclude Include="Scenes\SceneDev1.h" />
