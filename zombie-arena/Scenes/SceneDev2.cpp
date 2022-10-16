@@ -84,6 +84,11 @@ void SceneDev2::Update(float dt)
 		{
 			SCENE_MGR->ChangeScene(Scenes::ETCShop);
 		}
+		else if (UiDev2Mgr::GetNextStageChoice() == 1)
+		{
+			// 다음 스테이지로
+			SCENE_MGR->ChangeScene(Scenes::Dev1);
+		}
 	}
 
 	for (auto obj : objList)

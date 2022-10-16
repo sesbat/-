@@ -5,6 +5,7 @@
 #include "../GameObject/Zombie.h"
 #include "../GameObject/Player.h"
 int UiDev2Mgr::shopChoice;
+int UiDev2Mgr::nextStageChoice;
 
 UiDev2Mgr::UiDev2Mgr(Scene* scene)
 	: UiMgr(scene)
@@ -30,8 +31,9 @@ void UiDev2Mgr::Init()
 	uiObjList.push_back(shopInside);
 
 
+	Font& font = *RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf");
 	textGold = new TextObj();
-	textGold->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
+	textGold->SetFont(font);
 	textGold->GetSfmlText().setCharacterSize(60);
 	textGold->GetSfmlText().setFillColor({ 255, 215, 0 });
 	textGold->GetSfmlText().setPosition({ 1500, 50 });
@@ -56,6 +58,9 @@ void UiDev2Mgr::Init()
 	choice->SetPos({ 0, 0 });
 	uiObjList.push_back(choice);
 
+	nextStage = new TextObj();
+	nextStage->SetAll(font, "NEXT STAGE >>", 60, Color::White, {1400, 950});
+	uiObjList.push_back(nextStage);
 
 	cursor = new SpriteObj();
 	cursor->SetTexture(*RESOURCE_MGR->GetTexture("graphics/crosshair.png"));
@@ -103,10 +108,26 @@ void UiDev2Mgr::Update(float dt)
 			choice->SetPos({ 1073 , 607 });
 		}
 		else
+		{
 			choice->SetActive(false);
+			shopChoice = 2;
+		}
 	}
 	else
 		choice->SetActive(false);
+
+
+	if (cursor->GetPos().x >= 1400 && cursor->GetPos().x <= 1750 &&
+		cursor->GetPos().y >= 960 && cursor->GetPos().y <= 1000)
+	{
+		nextStage->SetColor(Color::Red);
+		nextStageChoice = 1;
+	}
+	else
+	{
+		nextStage->SetColor(Color::White);
+		nextStageChoice = 0;
+	}
 }
 
 void UiDev2Mgr::Draw(RenderWindow& window)
@@ -118,6 +139,11 @@ void UiDev2Mgr::Draw(RenderWindow& window)
 int UiDev2Mgr::GetShopChoice()
 {
 	return shopChoice;
+}
+
+int UiDev2Mgr::GetNextStageChoice()
+{
+	return nextStageChoice;
 }
 
 void UiDev2Mgr::SetGold(int gold)

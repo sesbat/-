@@ -17,6 +17,7 @@ public:
 	void SetFont(Font& font);
 	void SetText(string str);
 	void SetAll(Font& font, string str, int size, Color color, Vector2f pos);
+	void SetColor(Color color);
 	const string& GetText() const;
 };
 

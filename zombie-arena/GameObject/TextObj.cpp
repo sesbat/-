@@ -32,6 +32,11 @@ void TextObj::SetAll(Font& font, string str, int size, Color color, Vector2f pos
 	text.setPosition(pos);
 }
 
+void TextObj::SetColor(Color color)
+{
+	text.setFillColor(color);
+}
+
 const string& TextObj::GetText() const
 {
 	return text.getString();

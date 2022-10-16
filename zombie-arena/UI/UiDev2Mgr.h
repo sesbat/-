@@ -15,6 +15,8 @@ protected:
 	SpriteObj* cursor;
 	SpriteObj* choice;
 
+	TextObj* nextStage;
+
 public:
 	UiDev2Mgr(Scene* scene);
 	~UiDev2Mgr();
@@ -29,5 +31,8 @@ public:
 
 	static int shopChoice;
 	static int GetShopChoice();
+
+	static int nextStageChoice;
+	static int GetNextStageChoice();
 };
 
