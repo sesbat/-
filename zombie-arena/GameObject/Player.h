@@ -71,6 +71,7 @@ public:
 	void Fire();
 	void Reload();
 
+	Vector2f GetLook() { return look; }
 	void OnPickupItem(Pickup* item);
 	void OnHitZombie(Zombie* zombie);
 };
