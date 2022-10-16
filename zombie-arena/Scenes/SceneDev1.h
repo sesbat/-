@@ -19,6 +19,7 @@ protected:
 	SpriteObj* cursor;
 	SpriteObj* barricade;
 
+	
 
 	ObjectPool<Bullet> bullets;
 

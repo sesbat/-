@@ -8,6 +8,7 @@ class UiDev1Mgr
 {
 protected:
 	string ZombieCount = "Zombie Count :"; // "Score : %d"
+	TextObj* bulletcount;
 	TextObj* textZombieCount;
 	SpriteObj* cursor;
 public:
@@ -21,6 +22,7 @@ public:
 	virtual void Draw(RenderWindow& window);
 
 	void SetZombieCount(int count);
+	void SetBulletCount(int current, int mag);
 
 };
 

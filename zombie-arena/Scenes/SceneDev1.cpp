@@ -158,6 +158,7 @@ void SceneDev1::Update(float dt)
 	cout << realcam.x << " " << realcam.y << endl;
 
 	worldView.setCenter(realcam);
+	((UiDev1Mgr*)uiMgr)->SetBulletCount(player->GetCurrnetbulletCount(), player->GetMagCount());
 
 	if (InputMgr::GetKeyDown(Keyboard::Escape))
 	{

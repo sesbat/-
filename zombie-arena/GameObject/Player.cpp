@@ -11,9 +11,10 @@
 #include "../UI/UiDev1Mgr.h"
 #include "../Framework/SoundMgr.h"
 
+int Player::mag = 10;
+
 Player::Player()
-	: speed(500), accelation(1000), deaccelation(1000), bulletPool(nullptr),
-	currentAmmo(100), magazineSize(100), ammo(200), reloadTime(1.5f), reloadTimer(0.f), isReloading(false),
+	: speed(500), accelation(1000), deaccelation(1000), bulletPool(nullptr), reloadTime(1.5f), reloadTimer(0.f), isReloading(false),
 	fireMode(FireModes::Manual), semiTotal(3), intervalManual(0.1f), intervalSemiauto(0.1f), intervalAuto(0.1f),
 	isSemiFiring(false), semiCount(0)
 {
@@ -114,7 +115,7 @@ void Player::Update(float dt)
 	pos.x = Utils::Clamp(position.x,
 		wallBound.left + border,
 		wallBound.left + wallBound.width - border);
-	pos.y = Utils::Clamp(position.y, 
+	pos.y = Utils::Clamp(position.y,
 		wallBound.top + border,
 		wallBound.top + wallBound.height - border);
 	if (pos != position)
@@ -161,7 +162,7 @@ void Player::Update(float dt)
 	switch (fireMode)
 	{
 	case FireModes::Manual:
-		if (fireTimer > intervalManual && 
+		if (fireTimer > intervalManual &&
 			InputMgr::GetMouseButtonDown(Mouse::Button::Left))
 		{
 			Fire();
@@ -176,7 +177,7 @@ void Player::Update(float dt)
 				isSemiFiring = true;
 			}
 
-			semiCount++; 
+			semiCount++;
 			cout << semiCount << endl;
 			if (semiCount <= semiTotal && currentAmmo > 0)
 			{
@@ -222,28 +223,26 @@ void Player::Fire()
 	--currentAmmo;
 	fireTimer = 0.f;
 
-	cout << currentAmmo << " / " << magazineSize << "  " << ammo << endl;
 	SOUND_MGR->Play("sound/shoot.wav", false);
 
 }
 
 void Player::Reload()
 {
-	isReloading = true;
-	reloadTimer = 0.f;
+	if (mag > 0) {
+		isReloading = true;
+		reloadTimer = 0.f;
 
-	int add = magazineSize - currentAmmo;
-	if (ammo < add)
-	{
-		add = ammo;
+
+		mag--;
+
+		currentAmmo = 8;
+
+
+		cout << "Reload Start" << endl;
+
+		SOUND_MGR->Play("sound/reload.wav", false);
 	}
-
-	currentAmmo += add;
-	ammo -= add;
-
-	cout << "Reload Start" << endl;
-	cout << currentAmmo << " / " << magazineSize << "  " << ammo << endl;
-	SOUND_MGR->Play("sound/reload.wav", false);
 
 }
 
@@ -252,7 +251,7 @@ void Player::OnPickupItem(Pickup* item)
 	switch (item->GetType())
 	{
 	case Pickup::Types::Ammo:
-		ammo += item->GetValue();
+		//	ammo += item->GetValue();
 		break;
 	case Pickup::Types::Health:
 		// ü�� ����
