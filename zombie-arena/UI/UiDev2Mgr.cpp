@@ -3,7 +3,7 @@
 #include "../Scenes/SceneDev2.h"
 #include "../Framework/InputMgr.h"
 #include "../GameObject/Zombie.h"
-
+#include "../GameObject/Player.h"
 int UiDev2Mgr::shopChoice;
 
 UiDev2Mgr::UiDev2Mgr(Scene* scene)
@@ -62,6 +62,7 @@ void UiDev2Mgr::Init()
 	cursor->SetOrigin(Origins::MC);
 	uiObjList.push_back(cursor);
 
+
 	UiMgr::Init();
 }
 
@@ -74,25 +75,28 @@ void UiDev2Mgr::Reset()
 {
 	UiMgr::Reset();
 	SetGold(0);
+	
 }
 
 void UiDev2Mgr::Update(float dt)
 {
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
+
 	UiMgr::Update(dt);
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
 
 
-	if (cursor->GetPos().x >= 1100 && cursor->GetPos().x <= 1790) // ÁÂ, ¿ì
+	if (cursor->GetPos().x >= 1100 && cursor->GetPos().x <= 1790) // ï¿½ï¿½, ï¿½ï¿½
 	{
-		if (cursor->GetPos().y >= 270 && cursor->GetPos().y <= 460) // GUN »óÁ¡
+		if (cursor->GetPos().y >= 270 && cursor->GetPos().y <= 460) // GUN ï¿½ï¿½ï¿½ï¿½
 		{
 			shopChoice = 0;
 			choice->SetActive(true);
 			choice->SetPos({ 1073 , 257 });
 		}
-		else if (cursor->GetPos().y >= 620 && cursor->GetPos().y <= 810) // ETC »óÁ¡
+		else if (cursor->GetPos().y >= 620 && cursor->GetPos().y <= 810) // ETC ï¿½ï¿½ï¿½ï¿½
 		{
 			shopChoice = 1;
 			choice->SetActive(true);
@@ -118,5 +122,6 @@ int UiDev2Mgr::GetShopChoice()
 
 void UiDev2Mgr::SetGold(int gold)
 {
-	textGold->SetText(formatGold + to_string(gold));
+	
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
 }

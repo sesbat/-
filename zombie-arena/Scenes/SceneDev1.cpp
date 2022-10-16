@@ -161,6 +161,7 @@ void SceneDev1::Update(float dt)
 	cout << realcam.x << " " << realcam.y << endl;
 
 	worldView.setCenter(realcam);
+	((UiDev1Mgr*)uiMgr)->SetBulletCount(player->GetCurrnetbulletCount(), player->GetMagCount());
 
 	if (InputMgr::GetKeyDown(Keyboard::Escape))
 	{
@@ -169,6 +170,10 @@ void SceneDev1::Update(float dt)
 	if (InputMgr::GetKeyDown(Keyboard::P))
 	{
 		CreateBarricade();
+	}
+	if (InputMgr::GetKeyDown(Keyboard::Space))
+	{
+		SCENE_MGR->ChangeScene(Scenes::Dev2);
 	}
 	
 	zombieCount = zombies.size();
@@ -180,6 +185,7 @@ void SceneDev1::Update(float dt)
 			((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
 		}
 	}
+
 	for (auto& v : zombies) {
 		if (v->GetActive()) {
 			break;

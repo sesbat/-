@@ -6,7 +6,7 @@
 class UiDev2Mgr : public UiMgr
 {
 protected:
-	string formatGold = "Gold : ";
+	string formatGold = "Gold  :  ";
 	TextObj* textGold;
 	SpriteObj* shopInside;
 	SpriteObj* shopBackground;
@@ -18,12 +18,12 @@ protected:
 public:
 	UiDev2Mgr(Scene* scene);
 	~UiDev2Mgr();
-	virtual void Init()override;
-	virtual void Release();
-	virtual void Reset();
+	virtual void Init() override;
+	virtual void Release() override;
+	virtual void Reset() override;
 
-	virtual void Update(float dt);
-	virtual void Draw(RenderWindow& window);
+	virtual void Update(float dt) override;
+	virtual void Draw(RenderWindow& window) override;
 
 	void SetGold(int gold);
 

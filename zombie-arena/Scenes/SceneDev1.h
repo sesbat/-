@@ -22,6 +22,7 @@ protected:
 	list<Barricade*> barricades;
 	SpriteObj* barricade;
 
+	
 
 	ObjectPool<Bullet> bullets;
 

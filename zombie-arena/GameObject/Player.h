@@ -36,8 +36,6 @@ protected:
 	UiMgr* uiMgr;
 
 	int currentAmmo;
-	int magazineSize;
-	int ammo;
 
 	bool isReloading;
 	float reloadTime;
@@ -54,6 +52,9 @@ protected:
 	bool isSemiFiring;
 
 	float itemTimer;
+
+	static int mag;
+	static int money;
 
 public:
 	Player();
@@ -74,5 +75,10 @@ public:
 	Vector2f GetLook() { return look; }
 	void OnPickupItem(Pickup* item);
 	void OnHitZombie(Zombie* zombie);
+
+	int GetMagCount() { return mag; }
+	int GetCurrnetbulletCount() { return currentAmmo; }
+	static void SetMoney(int a) { money += a; }
+	static int GetMoney() { return money; }
 };
 
