@@ -1,8 +1,7 @@
 #include "UiGunShop.h"
 #include "../Framework/ResourceMgr.h"
-#include "../Scenes/SceneDev2.h"
+#include "../Scenes/SceneGunShop.h"
 #include "../Framework/InputMgr.h"
-#include "../GameObject/Zombie.h"
 
 int UiGunShop::buyMagazine = 0;
 
@@ -105,6 +104,7 @@ void UiGunShop::Release()
 
 void UiGunShop::Reset()
 {
+	buyMagazine = 0;
 	UiMgr::Reset();
 }
 
@@ -144,7 +144,8 @@ void UiGunShop::Update(float dt)
 			buyMagazine++;
 
 		if (cursor->GetPos().y >= subMag->GetPos().y - 50 && cursor->GetPos().y <= subMag->GetPos().y + 50 &&
-			cursor->GetPos().x >= subMag->GetPos().x - 50 && cursor->GetPos().x <= subMag->GetPos().x + 50)
+			cursor->GetPos().x >= subMag->GetPos().x - 50 && cursor->GetPos().x <= subMag->GetPos().x + 50 &&
+			buyMagazine > 0)
 			buyMagazine--;
 	}
 }

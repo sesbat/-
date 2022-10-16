@@ -82,7 +82,7 @@ void SceneDev2::Update(float dt)
 		}
 		else if (UiDev2Mgr::GetShopChoice() == 1)
 		{
-
+			SCENE_MGR->ChangeScene(Scenes::ETCShop);
 		}
 	}
 

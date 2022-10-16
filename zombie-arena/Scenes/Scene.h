@@ -11,6 +11,7 @@ enum class Scenes
 	Dev1,
 	Dev2,
 	GunShop,
+	ETCShop,
 };
 
 class UiMgr;
