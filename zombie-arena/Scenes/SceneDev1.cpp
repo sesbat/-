@@ -14,6 +14,7 @@
 #include "../GameObject/ItemGenerator.h"
 #include "../UI/UiDev1Mgr.h"
 #include "../GameObject/Barricade.h"
+#include "../GameObject/Gun.h"
 
 void OnCreateBullet(Bullet* bullet)
 {
@@ -141,7 +142,7 @@ void SceneDev1::Update(float dt)
 {
 	Scene::Update(dt);
 
-
+	GUN->Test();
 	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	
 
 	Vector2f dir;
@@ -157,8 +158,6 @@ void SceneDev1::Update(float dt)
 	Vector2f realcam;
 	realcam.x = camPoslen.x + player->GetPos().x;
 	realcam.y = camPoslen.y + player->GetPos().y;
-
-	cout << realcam.x << " " << realcam.y << endl;
 
 	worldView.setCenter(realcam);
 	((UiDev1Mgr*)uiMgr)->SetBulletCount(player->GetCurrnetbulletCount(), player->GetMagCount());

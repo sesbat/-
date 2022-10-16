@@ -1,9 +1,10 @@
 #pragma once
 #include "../3rd/Singleton.h"
 #include <SFML/Graphics.hpp>
-
+#include "../GameObject/Gun.h"
 using namespace sf;
 
+class Gun;
 class Framework : public Singleton<Framework>
 {
 protected:
@@ -14,6 +15,8 @@ protected:
 	Clock clock;
 	Time deltaTime;
 	float timeScale;
+	Gun gun;
+
 
 public:
 	Framework();

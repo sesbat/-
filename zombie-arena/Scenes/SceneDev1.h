@@ -3,13 +3,14 @@
 #include <list>
 #include "../Framework/ObjectPool.h"
 
+
 class Player;
 class VertexArrayObj;
 class Zombie;
 class Bullet;
 class SpriteObj;
 class Barricade;
-
+class Gun;
 class SceneDev1 : public Scene
 {
 protected:
@@ -21,8 +22,6 @@ protected:
 
 	list<Barricade*> barricades;
 	SpriteObj* barricade;
-
-	
 
 	ObjectPool<Bullet> bullets;
 
