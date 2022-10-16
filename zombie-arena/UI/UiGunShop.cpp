@@ -2,6 +2,7 @@
 #include "../Framework/ResourceMgr.h"
 #include "../Scenes/SceneGunShop.h"
 #include "../Framework/InputMgr.h"
+#include "../GameObject/Player.h"
 
 int UiGunShop::buyMagazine = 0;
 
@@ -115,6 +116,7 @@ void UiGunShop::Update(float dt)
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
 	SetGold(0);
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
 
 	/****************************** Test *****************************/
 	textMagazine->SetText("Magazine : " + to_string(buyMagazine));

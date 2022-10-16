@@ -2,6 +2,7 @@
 #include "../Framework/ResourceMgr.h"
 #include "../Scenes/SceneETCShop.h"
 #include "../Framework/InputMgr.h"
+#include "../GameObject/Player.h"
 
 int UiETCShop::buyBarricade = 0;
 
@@ -80,9 +81,9 @@ void UiETCShop::Update(float dt)
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
+	textGold->SetText(formatGold + to_string(Player::GetMoney()));
 
-	// test
-	SetGold(0);
+	
 	textBarricade->SetText("BARRICADE COUNT : " + to_string(buyBarricade));
 
 	if (InputMgr::GetMouseButton(Mouse::Left))
