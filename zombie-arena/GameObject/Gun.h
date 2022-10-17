@@ -81,6 +81,8 @@ public:
 
 	void SetFireMode();
 
+	int PrintCurrentMaxAmmo(){return  gun[currentgun]->maxammo;}
+
 	int PrintCurrent() { return (int)currentgun; }
 	
 };

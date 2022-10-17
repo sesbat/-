@@ -17,7 +17,7 @@ protected:
 	VertexArrayObj* background;
 	Player* player;
 	list<Zombie*> zombies;
-	int zombieCount;
+	static int zombieCount;
 	SpriteObj* cursor;
 
 	static int currRound;
@@ -48,7 +48,7 @@ public:
 	void CreateBarricade();
 
 	static void AddBaricount(int a) { barrcadecount+=a; }
-
+	static int GetZombiecount() { return zombieCount; }
 	list<Zombie*>* GetZombieList() { return &zombies; }
 };
 

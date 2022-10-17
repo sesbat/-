@@ -93,6 +93,7 @@ void UiDev1Mgr::Update(float dt)
 {
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
+
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
@@ -106,6 +107,8 @@ void UiDev1Mgr::Update(float dt)
 	{
 		waiting->SetActive(false);
 	}
+
+	SetZombieCount(SceneDev1::GetZombiecount());
 }
 
 void UiDev1Mgr::Draw(RenderWindow& window)
