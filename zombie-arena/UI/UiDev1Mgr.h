@@ -17,6 +17,7 @@ protected:
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
 
+	TextObj* round;
 	TextObj* waiting;
 	TextObj* mode;
 	float waitingCount = 6.f;
@@ -34,9 +35,8 @@ public:
 	void SetZombieCount(int count);
 	void SetBulletCount(int current, int mag);
 	static void SetDieImage(bool set);
+
 	static SpriteObj* dieImage;
-	static TextObj* round;
-	static void SetRound(bool set);
 
 	static float goWaitingShopCount;
 	static TextObj* goWaitingShop;

@@ -6,7 +6,6 @@
 #include "../Framework/Framework.h"
 
 SpriteObj* UiDev1Mgr::dieImage = new SpriteObj();
-TextObj* UiDev1Mgr::round = new TextObj();
 TextObj* UiDev1Mgr::goWaitingShop = new TextObj();
 float UiDev1Mgr::goWaitingShopCount = 6.f;
 
@@ -72,6 +71,7 @@ void UiDev1Mgr::Init()
 	dieImage->SetActive(false);
 	uiObjList.push_back(dieImage);
 
+	round = new TextObj();
 	round->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 100, Color::White, { 1920 / 2 - 200, 1080 / 2 - 300 });
 	round->SetActive(false);
 	uiObjList.push_back(round);
@@ -106,10 +106,13 @@ void UiDev1Mgr::Reset()
 
 void UiDev1Mgr::Update(float dt)
 {
-	if (InputMgr::GetKeyDown(Keyboard::Space))
+	if (dieImage->GetActive())
 	{
-		SetRound(false);
+		round->SetText("DAY  -  " + to_string(SceneDev1::GetCurrRound()));
+		round->SetActive(true);
 	}
+	else
+		round->SetActive(false);
 
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
@@ -158,12 +161,6 @@ void UiDev1Mgr::SetBulletCount(int current, int mag)
 void UiDev1Mgr::SetDieImage(bool set)
 {
 	dieImage->SetActive(set);
-}
-
-void UiDev1Mgr::SetRound(bool set)
-{
-	round->SetText("DAY  -  " + to_string(SceneDev1::GetCurrRound()));
-	round->SetActive(set);
 }
 
 void UiDev1Mgr::SetWaitingShop(bool set, float dt)
