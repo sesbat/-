@@ -112,7 +112,7 @@ void SceneDev1::Enter()
 	uiView.setCenter(size.x * 0.5f, size.y * 0.5f);
 
 	player->SetPos( { 0, 0 });
-	CreateZombies(10);
+
 	zombieCount = zombies.size();
 	((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
 }
@@ -145,6 +145,13 @@ void SceneDev1::Exit()
 void SceneDev1::Update(float dt)
 {
 	Scene::Update(dt);
+	
+	stack += dt;
+	if (stack >= 5.f&&!made)
+	{
+		CreateZombies(10);
+		made = true;
+	}
 
 	cout<<(int)GUN->PrintCurrentMode()<<endl;
 	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	

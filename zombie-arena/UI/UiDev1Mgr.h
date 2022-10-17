@@ -15,7 +15,7 @@ protected:
 	SpriteObj* rifleicon;
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
-	//ÇöÀçÃÑ ¾ÆÀÌÄÜ»ý¼º
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½
 	
 public:
 	UiDev1Mgr(Scene* scene);

@@ -20,6 +20,8 @@ protected:
 	int zombieCount;
 	SpriteObj* cursor;
 	
+	bool made = false;
+	float stack = 0.f;
 	list<Barricade*> barricades;
 
 	ObjectPool<Bullet> bullets;

@@ -23,7 +23,6 @@ protected:
 	Vector2f dir;
 	float speed;
 	bool trapped;
-	float startDelay=3.f;
 	float delay = 2.f;
 	
 	int maxHp;
