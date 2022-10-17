@@ -10,6 +10,7 @@ protected:
 	string ZombieCount = "Zombie Count :"; // "Score : %d"
 	TextObj* bulletcount;
 	TextObj* textZombieCount;
+	TextObj* Roundtext;
 	SpriteObj* cursor;
 
 	SpriteObj* rifleicon;

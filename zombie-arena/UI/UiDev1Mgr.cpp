@@ -22,6 +22,13 @@ void UiDev1Mgr::Init()
 	textZombieCount->GetSfmlText().setPosition({ 50,50 });
 	uiObjList.push_back(textZombieCount);
 
+	Roundtext = new TextObj();
+	Roundtext->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
+	Roundtext->GetSfmlText().setCharacterSize(75);
+	Roundtext->GetSfmlText().setPosition({ (float)FRAMEWORK->GetWindowSize().x/2,50.f});
+	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
+	uiObjList.push_back(Roundtext);
+
 	bulletcount = new TextObj();
 	bulletcount->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
 	bulletcount->GetSfmlText().setCharacterSize(75);
@@ -67,7 +74,7 @@ void UiDev1Mgr::Reset()
 void UiDev1Mgr::Update(float dt)
 {
 	UiMgr::Update(dt);
-
+	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);

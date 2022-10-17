@@ -16,6 +16,7 @@
 #include "../GameObject/Barricade.h"
 #include "../GameObject/Gun.h"
 
+int SceneDev1::currRound = 0;
 void OnCreateBullet(Bullet* bullet)
 {
 	SceneDev1* scene = (SceneDev1*)SCENE_MGR->GetScene(Scenes::Dev1);
@@ -115,6 +116,8 @@ void SceneDev1::Enter()
 
 	zombieCount = zombies.size();
 	((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
+
+	currRound++;
 }
 
 void SceneDev1::Exit()
@@ -133,7 +136,7 @@ void SceneDev1::Exit()
 	bullets.Reset();
 	for (auto bar : barricades)
 	{
-		barricades.remove(bar);
+		delete bar;
 	}
 	barricades.clear();
 

@@ -19,6 +19,8 @@ protected:
 	list<Zombie*> zombies;
 	int zombieCount;
 	SpriteObj* cursor;
+
+	static int currRound;
 	
 	bool made = false;
 	float stack = 0.f;
@@ -38,6 +40,8 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(RenderWindow& window) override;
+
+	static int GetCurrRound() { return currRound; }
 
 	void CreateBackground(int cols, int rows, float quadWidth, float quadHeight);
 	void CreateZombies(int count);
