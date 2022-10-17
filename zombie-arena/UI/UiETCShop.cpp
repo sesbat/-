@@ -23,7 +23,7 @@ void UiETCShop::Init()
 	Font& font = *RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf");
 
 	textGold = new TextObj();
-	textGold->SetAll(font, "", 60, { 255, 215, 0 }, { 1350, 0 });
+	textGold->SetAll(font, "", 60, { 255, 215, 0 }, { 1350, 20 });
 	uiObjList.push_back(textGold);
 
 	barricadeName = new TextObj();
@@ -145,7 +145,6 @@ void UiETCShop::Update(float dt)
 			{
 				Player::SetMoney(-1*(buyBarricade * barricadeval));
 				SceneDev1::AddBaricount(buyBarricade);
-				
 				buyBarricade = 0;
 				
 			}

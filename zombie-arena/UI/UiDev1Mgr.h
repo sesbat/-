@@ -7,7 +7,7 @@ class UiDev1Mgr
 	:public UiMgr
 {
 protected:
-	string ZombieCount = "Zombie Count :"; // "Score : %d"
+	string ZombieCount = "Zombie Count : ";
 	TextObj* bulletcount;
 	TextObj* textZombieCount;
 	TextObj* Roundtext;

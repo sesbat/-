@@ -35,8 +35,7 @@ void UiDev1Mgr::Init()
 	bulletcount = new TextObj();
 	bulletcount->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
 	bulletcount->GetSfmlText().setCharacterSize(75);
-	bulletcount->GetSfmlText().setPosition({ 50,850});
-	//bulletcount->SetText("test");
+	bulletcount->GetSfmlText().setPosition({ 50,850 });
 	uiObjList.push_back(bulletcount);
 
 	cursor = new SpriteObj();

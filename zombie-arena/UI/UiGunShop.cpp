@@ -34,7 +34,7 @@ void UiGunShop::Init()
 
 	Font& font = *RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf");
 	textGold = new TextObj();
-	textGold->SetAll(font, "", 60, { 255, 215, 0 }, { 1350, 0 });
+	textGold->SetAll(font, "", 60, { 255, 215, 0 }, { 1350, 20 });
 	uiObjList.push_back(textGold);
 
 	pistolName = new TextObj();
@@ -109,12 +109,12 @@ void UiGunShop::Init()
 	/*************************************************************************************/
 
 	assaultUnLock = new TextObj();
-	assaultUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[1]->GetPos().y + 20 });
+	assaultUnLock->SetAll(font, "UNLOCK    50 GOLD", 70, Color::Black, { 1920 / 2, locking[1]->GetPos().y });
 	assaultUnLock->SetOrigin(Origins::MC);
 	uiObjList.push_back(assaultUnLock);
 
 	shotGunUnLock = new TextObj();
-	shotGunUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[2]->GetPos().y + 20 });
+	shotGunUnLock->SetAll(font, "UNLOCK    50 GOLD", 70, Color::Black, { 1920 / 2, locking[2]->GetPos().y });
 	shotGunUnLock->SetOrigin(Origins::MC);
 	uiObjList.push_back(shotGunUnLock);
 
@@ -289,8 +289,6 @@ void UiGunShop::Update(float dt)
 						Player::SetMoney(-1 * (buyAssaultMagazine * assaultmagval));
 						GUN->BuyMag(TYPE::RIFLE, buyAssaultMagazine);
 						buyAssaultMagazine = 0;
-						// 골드 변경
-						// 아이템 개수 변경
 					}
 
 					if ((cursor->GetPos().y >= buy[2]->GetPos().y - buy[2]->GetSize().y / 2 &&
@@ -299,8 +297,6 @@ void UiGunShop::Update(float dt)
 						Player::SetMoney(-1 * (buyShotGunMagazine * shotgunmagval));
 						GUN->BuyMag(TYPE::SHOTGUN, buyShotGunMagazine);
 						buyShotGunMagazine = 0;
-						// 골드 변경
-						// 아이템 개수 변경
 					}
 				}
 			}

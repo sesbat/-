@@ -157,7 +157,7 @@ void Player::Update(float dt)
 		GUN->SetFireMode();
 	}
 
-	//firemode ³Ñ°Ü¼­ ÆÄÀÌ¾î¸ðµå¿¡ ¸Â°Ô »ç°Ý
+	//firemode ï¿½Ñ°Ü¼ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½å¿¡ ï¿½Â°ï¿½ ï¿½ï¿½ï¿½
 	
 	switch ((int)GUN->PrintCurrentMode())
 	{
