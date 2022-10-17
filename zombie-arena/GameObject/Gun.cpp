@@ -35,7 +35,7 @@ Gun::Gun()
 	shotgun->currentammo = 10;
 	shotgun->maxammo = 5;
 	shotgun->magcount = 0;
-	shotgun->unlocked = true;
+	shotgun->unlocked = false;
 	shotgun->mode.AUTO = false;
 	shotgun->mode.BURST = false;
 	shotgun->mode.MANUAL = true;
