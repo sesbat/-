@@ -214,6 +214,7 @@ void Player::Fire()
 	{
 		return;
 	}
+	
 
 	Vector2f startPos = position;
 	startPos += look * 25.f;
@@ -223,6 +224,15 @@ void Player::Fire()
 	GUN->shoot();
 	fireTimer = 0.f;
 
+	if (GUN->PrintCurrent() == 2) {
+		Bullet* bullet1 = bulletPool->Get();
+		Bullet* bullet2 = bulletPool->Get();
+		bullet1->SetBackground(background);
+		bullet2->SetBackground(background);
+		bullet1->Fire(startPos, { look.x + 10,look.y },1000, 500);
+		bullet2->Fire(startPos, { look.x - 10,look.y }, 1000, 500);
+
+	}
 	SOUND_MGR->Play("sound/shoot.wav", false);
 
 }
