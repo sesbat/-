@@ -36,7 +36,9 @@ protected:
 	int buyPistolMagazine;
 	int buyAssaultMagazine;
 	int buyShotGunMagazine;
-
+	int pistolmagval = 10;
+	int assaultmagval = 20;
+	int shotgunmagval = 15;
 	int buyCount = 0;
 
 public:

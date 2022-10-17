@@ -67,18 +67,24 @@ public:
 		gun[currentgun]->magcount--;
 		gun[currentgun]->currentammo= gun[currentgun]->maxammo;		
 	}
+	void UnlockGun(int type) {
+		gun[(TYPE)type]->unlocked = true;
+	}
 
 	float PrintReloadTime() {
 		return gun[currentgun]->relaodtimer;
 	}
 
+	void BuyMag(TYPE type, int a) {
+		gun[type]->magcount += a;
+	}
+
 	void SetFireMode() {
-		//if(gun[currentgun]->mode.)
+		
 		int temp = gun[currentgun]->mode.firmodetemp;
 		temp++;
 		temp = temp % 3;
 		gun[currentgun]->mode.firmodetemp = temp;
-		//gun[currentgun]->mode.CUR=(firemode::Gunmode)temp;
 		switch (temp) {
 		case 0:
 			if (gun[currentgun]->mode.AUTO) {

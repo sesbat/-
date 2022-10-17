@@ -3,6 +3,7 @@
 #include "../Scenes/SceneGunShop.h"
 #include "../Framework/InputMgr.h"
 #include "../GameObject/Player.h"
+#include "../GameObject/Gun.h"
 
 UiGunShop::UiGunShop(Scene* scene)
 	: UiMgr(scene)
@@ -37,7 +38,7 @@ void UiGunShop::Init()
 	uiObjList.push_back(textGold);
 
 	pistolName = new TextObj();
-	pistolName->SetAll(font, "PISTOL", 40, Color::Black, {450, 60});
+	pistolName->SetAll(font, "PISTOL", 40, Color::Black, { 450, 60 });
 	uiObjList.push_back(pistolName);
 
 	assaultName = new TextObj();
@@ -45,7 +46,7 @@ void UiGunShop::Init()
 	uiObjList.push_back(assaultName);
 
 	shotGunName = new TextObj();
-	shotGunName->SetAll(font, "SHOT GUN", 40, Color::Black, {420, 810});
+	shotGunName->SetAll(font, "SHOT GUN", 40, Color::Black, { 420, 810 });
 	uiObjList.push_back(shotGunName);
 
 	/******************************* add, sub, buy Texture ******************************/
@@ -74,10 +75,10 @@ void UiGunShop::Init()
 	locking[0]->SetAll(lockingTex, { assaultRifle->GetPos().x - (assaultRifle->GetSize().x / 2), pistol->GetPos().y }, Origins::ML);
 	locking[1]->SetAll(lockingTex, { assaultRifle->GetPos().x - (assaultRifle->GetSize().x / 2), assaultRifle->GetPos().y }, Origins::ML);
 	locking[2]->SetAll(lockingTex, { assaultRifle->GetPos().x - (assaultRifle->GetSize().x / 2), shotGun->GetPos().y }, Origins::ML);
-	
+
 	textMagazine[0]->SetAll(font, "", 50, Color::Black, { assaultRifle->GetPos().x + assaultRifle->GetSize().x + 140, pistol->GetPos().y - 30 });
-	textMagazine[1]->SetAll(font, "", 50, Color::Black, { assaultRifle->GetPos().x + assaultRifle->GetSize().x + 140, assaultRifle->GetPos().y - 30});
-	textMagazine[2]->SetAll(font, "", 50, Color::Black, { assaultRifle->GetPos().x + assaultRifle->GetSize().x + 140, shotGun->GetPos().y - 30});
+	textMagazine[1]->SetAll(font, "", 50, Color::Black, { assaultRifle->GetPos().x + assaultRifle->GetSize().x + 140, assaultRifle->GetPos().y - 30 });
+	textMagazine[2]->SetAll(font, "", 50, Color::Black, { assaultRifle->GetPos().x + assaultRifle->GetSize().x + 140, shotGun->GetPos().y - 30 });
 
 	for (int i = 0; i < addMag.size(); i++)
 	{
@@ -108,12 +109,12 @@ void UiGunShop::Init()
 	/*************************************************************************************/
 
 	assaultUnLock = new TextObj();
-	assaultUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[1]->GetPos().y + 20});
+	assaultUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[1]->GetPos().y + 20 });
 	assaultUnLock->SetOrigin(Origins::MC);
 	uiObjList.push_back(assaultUnLock);
 
 	shotGunUnLock = new TextObj();
-	shotGunUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[2]->GetPos().y + 20});
+	shotGunUnLock->SetAll(font, "5   0", 60, Color::Black, { 1920 / 2 - 5, locking[2]->GetPos().y + 20 });
 	shotGunUnLock->SetOrigin(Origins::MC);
 	uiObjList.push_back(shotGunUnLock);
 
@@ -150,10 +151,10 @@ void UiGunShop::Update(float dt)
 	textMagazine[0]->SetText(to_string(buyPistolMagazine));
 	textMagazine[1]->SetText(to_string(buyAssaultMagazine));
 	textMagazine[2]->SetText(to_string(buyShotGunMagazine));
-	
-	allPrice[0]->SetText(to_string(10 * buyPistolMagazine) + " GOLD");
-	allPrice[1]->SetText(to_string(20 * buyAssaultMagazine) + " GOLD");
-	allPrice[2]->SetText(to_string(15 * buyShotGunMagazine) + " GOLD");
+
+	allPrice[0]->SetText(to_string(pistolmagval * buyPistolMagazine) + " GOLD");
+	allPrice[1]->SetText(to_string(assaultmagval * buyAssaultMagazine) + " GOLD");
+	allPrice[2]->SetText(to_string(shotgunmagval * buyShotGunMagazine) + " GOLD");
 
 	if (buyCount >= 0)
 	{
@@ -170,37 +171,37 @@ void UiGunShop::Update(float dt)
 		shotGunUnLock->SetActive(false);
 	}
 
-	// test
-	if (InputMgr::GetKeyDown(Keyboard::A))
-		buyCount++;
 
-	//if (현재 골드 >= 50)
-	//{
-	//	if (cursor->GetPos().y >= locking[0]->GetPos().y - locking[0]->GetSize().y / 2 &&
-	//		cursor->GetPos().y <= locking[0]->GetPos().y + locking[0]->GetSize().y / 2 &&
-	//		cursor->GetPos().x >= locking[0]->GetPos().x - locking[0]->GetSize().x / 2 &&
-	//		cursor->GetPos().x <= locking[0]->GetPos().x + locking[0]->GetSize().x / 2 &&
-	//		buyCount == 0)
-	//	{
-			//if (InputMgr::GetMouseButtonUp(Mouse::Left))
-			// {
-			// 		골드 - 50
-			//		buyCount++;
-			// }
-	//	}
-	// if (cursor->GetPos().y >= locking[1]->GetPos().y - locking[0]->GetSize().y / 2 &&
-	//		cursor->GetPos().y <= locking[1]->GetPos().y + locking[0]->GetSize().y / 2 &&
-	//		cursor->GetPos().x >= locking[1]->GetPos().x - locking[0]->GetSize().x / 2 &&
-	//		cursor->GetPos().x <= locking[1]->GetPos().x + locking[0]->GetSize().x / 2 &&
-	//		buyCount == 1)
-	//	{
-			//if (InputMgr::GetMouseButtonUp(Mouse::Left))
-			// {
-			// 		골드 - 50
-			//		buyCount++;
-			// }
-	//	}
-	//}
+
+	if (Player::GetMoney() >= 50)
+	{
+		if (cursor->GetPos().y >= locking[0]->GetPos().y - locking[0]->GetSize().y / 2 &&
+			cursor->GetPos().y <= locking[0]->GetPos().y + locking[0]->GetSize().y / 2 &&
+			cursor->GetPos().x >= locking[0]->GetPos().x - locking[0]->GetSize().x / 2 &&
+			cursor->GetPos().x <= locking[0]->GetPos().x + locking[0]->GetSize().x / 2 &&
+			buyCount == 0)
+		{
+			if (InputMgr::GetMouseButtonUp(Mouse::Left))
+			{
+				Player::SetMoney(-50);
+				GUN->UnlockGun(1);
+				buyCount++;
+			}
+		}
+		if (cursor->GetPos().y >= locking[1]->GetPos().y - locking[0]->GetSize().y / 2 &&
+			cursor->GetPos().y <= locking[1]->GetPos().y + locking[0]->GetSize().y / 2 &&
+			cursor->GetPos().x >= locking[1]->GetPos().x - locking[0]->GetSize().x / 2 &&
+			cursor->GetPos().x <= locking[1]->GetPos().x + locking[0]->GetSize().x / 2 &&
+			buyCount == 1)
+		{
+			if (InputMgr::GetMouseButtonUp(Mouse::Left))
+			{
+				Player::SetMoney(-50);
+				GUN->UnlockGun(2);
+				buyCount++;
+			}
+		}
+	}
 
 	for (int i = 0; i < addMag.size(); i++)
 	{
@@ -244,7 +245,7 @@ void UiGunShop::Update(float dt)
 				if (InputMgr::GetMouseButtonUp(Mouse::Left))
 				{
 					subMag[i]->SetTexture(*RESOURCE_MGR->GetTexture("graphics/minus.png"));
-					
+
 					if (cursor->GetPos().y >= addMag[0]->GetPos().y - addMag[0]->GetSize().y / 2 &&
 						cursor->GetPos().y <= addMag[0]->GetPos().y + addMag[0]->GetSize().y / 2)
 						if (buyPistolMagazine > 0)
@@ -273,25 +274,30 @@ void UiGunShop::Update(float dt)
 				{
 					buy[i]->SetTexture(*RESOURCE_MGR->GetTexture("graphics/buy.png"));
 
-					if (cursor->GetPos().y >= buy[0]->GetPos().y - buy[0]->GetSize().y / 2 &&
-						cursor->GetPos().y <= buy[0]->GetPos().y + buy[0]->GetSize().y / 2)
+					if ((cursor->GetPos().y >= buy[0]->GetPos().y - buy[0]->GetSize().y / 2 &&
+						cursor->GetPos().y <= buy[0]->GetPos().y + buy[0]->GetSize().y / 2) && Player::GetMoney() >= buyPistolMagazine * pistolmagval)
 					{
+
+						Player::SetMoney(-1 * (buyPistolMagazine * pistolmagval));
+						GUN->BuyMag(TYPE::PISTOL, buyPistolMagazine);
 						buyPistolMagazine = 0;
-						// 골드 변경
-						// 아이템 개수 변경
 					}
 
-					if (cursor->GetPos().y >= buy[1]->GetPos().y - buy[1]->GetSize().y / 2 &&
-						cursor->GetPos().y <= buy[1]->GetPos().y + buy[1]->GetSize().y / 2)
+					if ((cursor->GetPos().y >= buy[1]->GetPos().y - buy[1]->GetSize().y / 2 &&
+						cursor->GetPos().y <= buy[1]->GetPos().y + buy[1]->GetSize().y / 2) && Player::GetMoney() >= buyAssaultMagazine * assaultmagval)
 					{
+						Player::SetMoney(-1 * (buyAssaultMagazine * assaultmagval));
+						GUN->BuyMag(TYPE::RIFLE, buyAssaultMagazine);
 						buyAssaultMagazine = 0;
 						// 골드 변경
 						// 아이템 개수 변경
 					}
 
-					if (cursor->GetPos().y >= buy[2]->GetPos().y - buy[2]->GetSize().y / 2 &&
-						cursor->GetPos().y <= buy[2]->GetPos().y + buy[2]->GetSize().y / 2)
+					if ((cursor->GetPos().y >= buy[2]->GetPos().y - buy[2]->GetSize().y / 2 &&
+						cursor->GetPos().y <= buy[2]->GetPos().y + buy[2]->GetSize().y / 2) && Player::GetMoney() >= buyShotGunMagazine * shotgunmagval)
 					{
+						Player::SetMoney(-1 * (buyShotGunMagazine * shotgunmagval));
+						GUN->BuyMag(TYPE::SHOTGUN, buyShotGunMagazine);
 						buyShotGunMagazine = 0;
 						// 골드 변경
 						// 아이템 개수 변경

@@ -18,8 +18,8 @@ Gun::Gun()
 	gunstat* rifle = new gunstat();
 	rifle->currentammo =30;
 	rifle->maxammo = 30;
-	rifle->magcount = 5;
-	rifle->unlocked = true;
+	rifle->magcount = 0;
+	rifle->unlocked = false;
 	rifle->relaodtimer = 3;
 	rifle->mode.AUTO = true;
 	rifle->mode.BURST = true;

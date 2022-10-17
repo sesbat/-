@@ -224,7 +224,7 @@ void SceneDev1::Update(float dt)
 	{
 		UiDev1Mgr::SetDieImage(false);
 	}
-	if (InputMgr::GetKeyDown(Keyboard::R))
+	if (InputMgr::GetKeyDown(Keyboard::E))
 	{
 		player->SetActive(false);
 		UiDev1Mgr::SetDieImage(true);
