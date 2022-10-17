@@ -175,10 +175,10 @@ void UiGunShop::Update(float dt)
 
 	if (Player::GetMoney() >= 50)
 	{
-		if (cursor->GetPos().y >= locking[0]->GetPos().y - locking[0]->GetSize().y / 2 &&
-			cursor->GetPos().y <= locking[0]->GetPos().y + locking[0]->GetSize().y / 2 &&
-			cursor->GetPos().x >= locking[0]->GetPos().x - locking[0]->GetSize().x / 2 &&
-			cursor->GetPos().x <= locking[0]->GetPos().x + locking[0]->GetSize().x / 2 &&
+		if (cursor->GetPos().y >= locking[1]->GetPos().y - locking[1]->GetSize().y / 2 &&
+			cursor->GetPos().y <= locking[1]->GetPos().y + locking[1]->GetSize().y / 2 &&
+			cursor->GetPos().x >= locking[1]->GetPos().x &&
+			cursor->GetPos().x <= locking[1]->GetPos().x + locking[1]->GetSize().x &&
 			buyCount == 0)
 		{
 			if (InputMgr::GetMouseButtonUp(Mouse::Left))
@@ -188,10 +188,10 @@ void UiGunShop::Update(float dt)
 				buyCount++;
 			}
 		}
-		if (cursor->GetPos().y >= locking[1]->GetPos().y - locking[0]->GetSize().y / 2 &&
-			cursor->GetPos().y <= locking[1]->GetPos().y + locking[0]->GetSize().y / 2 &&
-			cursor->GetPos().x >= locking[1]->GetPos().x - locking[0]->GetSize().x / 2 &&
-			cursor->GetPos().x <= locking[1]->GetPos().x + locking[0]->GetSize().x / 2 &&
+		if (cursor->GetPos().y >= locking[2]->GetPos().y - locking[2]->GetSize().y / 2 &&
+			cursor->GetPos().y <= locking[2]->GetPos().y + locking[2]->GetSize().y / 2 &&
+			cursor->GetPos().x >= locking[2]->GetPos().x &&
+			cursor->GetPos().x <= locking[2]->GetPos().x + locking[2]->GetSize().x &&
 			buyCount == 1)
 		{
 			if (InputMgr::GetMouseButtonUp(Mouse::Left))
