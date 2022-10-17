@@ -28,6 +28,8 @@ protected:
 	static int barrcadecount;
 	ObjectPool<Bullet> bullets;
 
+	float goShop = 6.f;
+
 public:
 	SceneDev1();
 	virtual ~SceneDev1();

@@ -36,5 +36,9 @@ public:
 	static SpriteObj* dieImage;
 	static TextObj* round;
 	static void SetRound(bool set);
+
+	static float goWaitingShopCount;
+	static TextObj* goWaitingShop;
+	static void SetWaitingShop(bool set, float dt);
 };
 

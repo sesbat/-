@@ -173,6 +173,7 @@ void SceneDev1::Update(float dt)
 	}
 	if (InputMgr::GetKeyDown(Keyboard::Space))
 	{
+		UiDev1Mgr::SetRound(false);
 		SCENE_MGR->ChangeScene(Scenes::Dev2);
 	}
 
@@ -201,9 +202,14 @@ void SceneDev1::Update(float dt)
 			break;
 		}
 		else if (!v->GetActive() && v == zombies.back()) {
-			currRound++;
-			SCENE_MGR->ChangeScene(Scenes::Dev2);
-			return;
+			goShop -= dt;
+			UiDev1Mgr::SetWaitingShop(true, dt);
+			if (goShop <= 0.f)
+			{
+				currRound++;
+				SCENE_MGR->ChangeScene(Scenes::Dev2);
+				return;
+			}
 		}
 	}
 
