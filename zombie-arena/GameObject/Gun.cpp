@@ -13,6 +13,7 @@ Gun::Gun()
 	pistol->mode.MANUAL = true;
 	pistol->mode.CUR = firemode::Gunmode::MANUAL;
 	pistol->mode.firmodetemp = 2;
+	pistol->damage = 20;
 	gun.insert({ TYPE::PISTOL,pistol });
 
 	gunstat* rifle = new gunstat();
@@ -25,6 +26,7 @@ Gun::Gun()
 	rifle->mode.BURST = true;
 	rifle->mode.MANUAL = true;
 	rifle->mode.CUR = firemode::Gunmode::MANUAL;
+	rifle->damage = 30;
 	rifle->mode.firmodetemp = 2;
 
 	gun.insert({ TYPE::RIFLE,rifle });
@@ -39,7 +41,7 @@ Gun::Gun()
 	shotgun->mode.CUR = firemode::Gunmode::MANUAL;
 	shotgun->mode.firmodetemp = 2;
 	shotgun->relaodtimer = 1;
-
+	shotgun->damage = 20;
 	gun.insert({ TYPE::SHOTGUN,shotgun });
 
 	currentgun = TYPE::PISTOL;
