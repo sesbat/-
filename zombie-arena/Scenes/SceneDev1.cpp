@@ -16,7 +16,7 @@
 #include "../GameObject/Barricade.h"
 #include "../GameObject/Gun.h"
 
-int SceneDev1::currRound = 0;
+int SceneDev1::currRound = 1;
 int SceneDev1::barrcadecount = 0;
 int SceneDev1::zombieCount = 0;
 
@@ -120,7 +120,6 @@ void SceneDev1::Enter()
 	zombieCount = zombies.size();
 	((UiDev1Mgr*)uiMgr)->SetZombieCount(zombieCount);
 
-	currRound++;
 }
 
 void SceneDev1::Exit()
@@ -220,6 +219,7 @@ void SceneDev1::Update(float dt)
 			break;
 		}
 		else if (!v->GetActive() && v == zombies.back()) {
+			currRound++;
 			SCENE_MGR->ChangeScene(Scenes::Dev2);
 			return;
 		}
@@ -264,6 +264,15 @@ void SceneDev1::Update(float dt)
 		}
 		else {
 			zombie->SetTrapped(false);
+		}
+	}
+	for (auto zombie : zombies)
+	{
+		if (player->GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
+		{
+			player->SetActive(false);
+			UiDev1Mgr::SetRound(true);
+			UiDev1Mgr::SetDieImage(true);
 		}
 	}
 		
