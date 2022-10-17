@@ -129,6 +129,7 @@ void SceneDev1::Exit()
 	made = false;
 
 	uiMgr->Reset();
+	goShop = 6.f;
 }
 
 void SceneDev1::Update(float dt)

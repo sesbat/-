@@ -74,7 +74,7 @@ void UiDev1Mgr::Init()
 	uiObjList.push_back(waiting);
 
 
-	goWaitingShop->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 100, Color::White, { 1920 / 4 - 100, 1080 / 2 - 70 });
+	goWaitingShop->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 100, Color::White, { 1920 / 3 - 100, 1080 / 2 - 70 });
 	goWaitingShop->SetActive(false);
 	uiObjList.push_back(goWaitingShop);
 
