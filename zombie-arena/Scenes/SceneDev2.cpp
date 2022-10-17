@@ -74,7 +74,7 @@ void SceneDev2::Update(float dt)
 		exit(1);
 	}
 
-	if (InputMgr::GetMouseButtonDown(Mouse::Button::Left))
+	if (InputMgr::GetMouseButtonUp(Mouse::Button::Left))
 	{
 		if (UiDev2Mgr::GetShopChoice() == 0)
 		{
