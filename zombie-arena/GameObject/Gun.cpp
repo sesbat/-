@@ -7,14 +7,25 @@ Gun::Gun()
 	pistol->maxammo=8;
 	pistol->magcount = 10;
 	pistol->unlocked = true;
-
+	pistol->relaodtimer = 0.5f;
+	pistol->mode.AUTO = true;
+	pistol->mode.BURST = false;
+	pistol->mode.MANUAL = true;
+	pistol->mode.CUR = firemode::Gunmode::MANUAL;
+	pistol->mode.firmodetemp = 2;
 	gun.insert({ TYPE::PISTOL,pistol });
 
 	gunstat* rifle = new gunstat();
-	rifle->currentammo = 0;
+	rifle->currentammo =30;
 	rifle->maxammo = 30;
-	rifle->magcount = 0;
-	rifle->unlocked = false;
+	rifle->magcount = 5;
+	rifle->unlocked = true;
+	rifle->relaodtimer = 3;
+	rifle->mode.AUTO = true;
+	rifle->mode.BURST = true;
+	rifle->mode.MANUAL = true;
+	rifle->mode.CUR = firemode::Gunmode::MANUAL;
+	rifle->mode.firmodetemp = 2;
 
 	gun.insert({ TYPE::RIFLE,rifle });
 
@@ -22,9 +33,14 @@ Gun::Gun()
 	shotgun->currentammo = 0;
 	shotgun->maxammo = 5;
 	shotgun->magcount = 0;
-	shotgun->unlocked = false;
+	shotgun->mode.AUTO = false;
+	shotgun->mode.BURST = false;
+	shotgun->mode.MANUAL = true;
+	shotgun->mode.CUR = firemode::Gunmode::MANUAL;
+	shotgun->mode.firmodetemp = 2;
+	shotgun->relaodtimer = 1;
 
-	gun.insert({ TYPE::RIFLE,shotgun });
+	gun.insert({ TYPE::SHOTGUN,shotgun });
 
 	currentgun = TYPE::PISTOL;
 	

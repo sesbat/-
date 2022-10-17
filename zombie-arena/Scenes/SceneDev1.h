@@ -19,7 +19,7 @@ protected:
 	list<Zombie*> zombies;
 	int zombieCount;
 	SpriteObj* cursor;
-
+	
 	list<Barricade*> barricades;
 	SpriteObj* barricade;
 

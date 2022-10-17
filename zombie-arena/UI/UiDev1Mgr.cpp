@@ -34,6 +34,21 @@ void UiDev1Mgr::Init()
 	cursor->SetOrigin(Origins::MC);
 	uiObjList.push_back(cursor);
 
+	pistolicon = new SpriteObj();
+	pistolicon->SetTexture(*RESOURCE_MGR->GetTexture("graphics/Gun1icon.png"));
+	pistolicon->SetOrigin(Origins::MC);
+	pistolicon->SetPos({ 100,850 - 60 });
+
+	rifleicon = new SpriteObj();
+	rifleicon->SetTexture(*RESOURCE_MGR->GetTexture("graphics/Gun2icon.png"));
+	rifleicon->SetOrigin(Origins::MC);
+	rifleicon->SetPos({ 100,850 - 60 });
+
+	shotgun = new SpriteObj();
+	shotgun->SetTexture(*RESOURCE_MGR->GetTexture("graphics/Gun3icon.png"));
+	shotgun->SetOrigin(Origins::MC);
+	shotgun->SetPos({ 100,850 - 60 });
+	
 	UiMgr::Init();
 	
 }
@@ -62,6 +77,14 @@ void UiDev1Mgr::Draw(RenderWindow& window)
 {
 	window.setView(parentScene->GetUiView());
 	UiMgr::Draw(window);
+	if (GUN->PrintCurrent() == 0)
+		window.draw(pistolicon->GetSprite());
+	else if (GUN->PrintCurrent() == 1) {
+		window.draw(rifleicon->GetSprite());
+	}
+	else if (GUN->PrintCurrent() == 2) {
+		window.draw(shotgun->GetSprite());
+	}
 }
 
 void UiDev1Mgr::SetZombieCount(int count)

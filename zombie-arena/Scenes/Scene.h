@@ -46,6 +46,7 @@ public:
 
 	Vector2f ScreenToWorldPos(Vector2i screenPos);
 	Vector2f ScreenToUiPos(Vector2i screenPos);
+	Vector2i UiPosToScreen(Vector2f UiPos);
 
 	Object* FindGameObj(string name);
 

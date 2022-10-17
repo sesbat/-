@@ -135,7 +135,7 @@ void Player::Update(float dt)
 	if (isReloading)
 	{
 		reloadTimer += dt;
-		if (reloadTimer > reloadTime)
+		if (reloadTimer > GUN->PrintReloadTime())
 		{
 			isReloading = false;
 			reloadTimer = 0.f;
@@ -152,25 +152,23 @@ void Player::Update(float dt)
 		Reload();
 	}
 
-	if (InputMgr::GetMouseButtonDown(Mouse::Button::Right))
+	if (InputMgr::GetKeyDown(Keyboard::Key::B))
 	{
-		int mode = ((int)fireMode + 1) % 3;
-		fireMode = (FireModes)mode;
-		fireTimer = numeric_limits<float>::max();
-
-		cout << "FireMode: " << mode << endl;
+		GUN->SetFireMode();
 	}
 
-	switch (fireMode)
+	//firemode 넘겨서 파이어모드에 맞게 사격
+	
+	switch ((int)GUN->PrintCurrentMode())
 	{
-	case FireModes::Manual:
+	case 2:
 		if (fireTimer > intervalManual &&
 			InputMgr::GetMouseButtonDown(Mouse::Button::Left))
 		{
 			Fire();
 		}
 		break;
-	case FireModes::Semi:
+	case 1:
 		if (fireTimer > intervalSemiauto &&
 			(isSemiFiring || InputMgr::GetMouseButtonDown(Mouse::Button::Left)))
 		{
@@ -193,7 +191,7 @@ void Player::Update(float dt)
 			}
 		}
 		break;
-	case FireModes::Auto:
+	case 0:
 		if (fireTimer > intervalAuto &&
 			InputMgr::GetMouseButton(Mouse::Button::Left))
 		{
@@ -212,7 +210,7 @@ void Player::Draw(RenderWindow& window)
 
 void Player::Fire()
 {
-	if (currentAmmo == 0)
+	if ( GUN->PrintCurrentammo() == 0)
 	{
 		return;
 	}
@@ -222,7 +220,7 @@ void Player::Fire()
 	Bullet* bullet = bulletPool->Get();
 	bullet->SetBackground(background);
 	bullet->Fire(startPos, look, 1000, 500);
-	--currentAmmo;
+	GUN->shoot();
 	fireTimer = 0.f;
 
 	SOUND_MGR->Play("sound/shoot.wav", false);
@@ -236,7 +234,7 @@ void Player::Reload()
 		reloadTimer = 0.f;
 
 
-		mag--;
+		GUN->Reload();
 
 		currentAmmo = 8;
 

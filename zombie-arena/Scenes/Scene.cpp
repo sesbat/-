@@ -63,7 +63,11 @@ Vector2f Scene::ScreenToUiPos(Vector2i screenPos)
 	RenderWindow& window = FRAMEWORK->GetWindow();
 	return window.mapPixelToCoords(screenPos, uiView);
 }
-
+Vector2i Scene::UiPosToScreen(Vector2f UiPos)
+{
+	RenderWindow& window = FRAMEWORK->GetWindow();
+	return window.mapCoordsToPixel(UiPos, uiView);
+}
 Object* Scene::FindGameObj(string name)
 {
 	for (auto obj : objList)
