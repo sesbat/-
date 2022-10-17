@@ -25,7 +25,7 @@ protected:
 	bool made = false;
 	float stack = 0.f;
 	list<Barricade*> barricades;
-
+	static int barrcadecount;
 	ObjectPool<Bullet> bullets;
 
 public:
@@ -46,6 +46,8 @@ public:
 	void CreateBackground(int cols, int rows, float quadWidth, float quadHeight);
 	void CreateZombies(int count);
 	void CreateBarricade();
+
+	static void AddBaricount(int a) { barrcadecount+=a; }
 
 	list<Zombie*>* GetZombieList() { return &zombies; }
 };

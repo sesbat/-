@@ -3,6 +3,7 @@
 #include "../Scenes/SceneETCShop.h"
 #include "../Framework/InputMgr.h"
 #include "../GameObject/Player.h"
+#include "../Scenes/SceneDev1.h"
 
 UiETCShop::UiETCShop(Scene* scene)
 	: UiMgr(scene)
@@ -55,7 +56,7 @@ void UiETCShop::Init()
 	uiObjList.push_back(textBarricade);
 
 	price = new TextObj();
-	price->SetAll(font, "PRICE : 100", 40, Color::Black, { edge->GetPos().x - 250, edge->GetPos().y - 50 });
+	price->SetAll(font, "PRICE : 40", 40, Color::Black, { edge->GetPos().x - 250, edge->GetPos().y - 50 });
 	uiObjList.push_back(price);
 
 	allPrice = new TextObj();
@@ -89,7 +90,7 @@ void UiETCShop::Update(float dt)
 	cursor->SetPos(worldMousePos);
 	textGold->SetText(formatGold + to_string(Player::GetMoney()));
 
-	allPrice->SetText(to_string(buyBarricade * 100) + " GOLD");
+	allPrice->SetText(to_string(buyBarricade * barricadeval) + " GOLD");
 	textBarricade->SetText(to_string(buyBarricade));
 
 
@@ -132,17 +133,18 @@ void UiETCShop::Update(float dt)
 		cursor->GetPos().x >= buy->GetPos().x - buy->GetSize().x / 2 &&
 		cursor->GetPos().x <= buy->GetPos().x + buy->GetSize().x / 2)
 	{
-		if (InputMgr::GetMouseButton(Mouse::Left)&&(buyBarricade*100)<=Player::GetMoney())
+		if (InputMgr::GetMouseButton(Mouse::Left)&&(buyBarricade* barricadeval)<=Player::GetMoney())
 		{
 			buy->SetTexture(*RESOURCE_MGR->GetTexture("graphics/buyClick.png"));
 		}
-		if (InputMgr::GetMouseButtonUp(Mouse::Left) && (buyBarricade * 100) <= Player::GetMoney())
+		if (InputMgr::GetMouseButtonUp(Mouse::Left) && (buyBarricade * barricadeval) <= Player::GetMoney())
 		{
 			buy->SetTexture(*RESOURCE_MGR->GetTexture("graphics/buy.png"));
 
 			if (buyBarricade > 0)
 			{
-				Player::SetMoney(-1*(Player::GetMoney() - buyBarricade * 100));
+				Player::SetMoney(-1*(buyBarricade * barricadeval));
+				SceneDev1::AddBaricount(buyBarricade);
 				
 				buyBarricade = 0;
 				

@@ -25,6 +25,7 @@ class UiETCShop : public UiMgr
 	SpriteObj* buy;
 
 	int buyBarricade = 0;
+	int barricadeval=40;
 
 public:
 	UiETCShop(Scene* scene);

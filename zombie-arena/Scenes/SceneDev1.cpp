@@ -17,6 +17,8 @@
 #include "../GameObject/Gun.h"
 
 int SceneDev1::currRound = 0;
+int SceneDev1::barrcadecount = 0;
+
 void OnCreateBullet(Bullet* bullet)
 {
 	SceneDev1* scene = (SceneDev1*)SCENE_MGR->GetScene(Scenes::Dev1);
@@ -180,8 +182,9 @@ void SceneDev1::Update(float dt)
 	{
 		exit(1);
 	}
-	if (InputMgr::GetKeyDown(Keyboard::P))
+	if (InputMgr::GetKeyDown(Keyboard::P)&&barrcadecount>0)
 	{
+		barrcadecount--;
 		CreateBarricade();
 	}
 	if (InputMgr::GetKeyDown(Keyboard::Space))
