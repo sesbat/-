@@ -35,6 +35,7 @@ protected:
 		int magcount;
 		bool unlocked;
 		float relaodtimer;
+		int damage;
 		firemode mode;
 	};
 
@@ -84,6 +85,8 @@ public:
 	int PrintCurrentMaxAmmo(){return  gun[currentgun]->maxammo;}
 
 	int PrintCurrent() { return (int)currentgun; }
+
+	int GunGetDamage(){return gun[currentgun]->damage;}
 	
 };
 
