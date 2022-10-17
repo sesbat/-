@@ -174,7 +174,6 @@ void SceneDev1::Update(float dt)
 	}
 	if (InputMgr::GetKeyDown(Keyboard::Space))
 	{
-		UiDev1Mgr::SetRound(false);
 		SCENE_MGR->ChangeScene(Scenes::Dev2);
 	}
 
@@ -223,7 +222,6 @@ void SceneDev1::Update(float dt)
 	if (InputMgr::GetKeyDown(Keyboard::E))
 	{
 		player->SetActive(false);
-		UiDev1Mgr::SetRound(true);
 		UiDev1Mgr::SetDieImage(true);
 	}
 
@@ -248,7 +246,6 @@ void SceneDev1::Update(float dt)
 			if (player->GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
 			{
 				player->SetActive(false);
-				UiDev1Mgr::SetRound(true);
 				UiDev1Mgr::SetDieImage(true);
 			}
 		}
