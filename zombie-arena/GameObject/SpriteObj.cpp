@@ -55,3 +55,11 @@ void SpriteObj::SetPos(const Vector2f& pos)
 	sprite.setPosition(position);
 }
 
+void SpriteObj::SetAll(Texture& tex, const Vector2f& pos, Origins origin)
+{
+	sprite.setTexture(tex);
+	Object::SetPos(pos);
+	sprite.setPosition(position);
+	Utils::SetOrigin(sprite, origin);
+}
+
