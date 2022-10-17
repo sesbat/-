@@ -3,7 +3,7 @@
 #include "Zombie.h"
 #include "VertexArrayObj.h"
 #include "../Framework/SoundMgr.h"
-
+#include "../GameObject/Gun.h"
 Bullet::Bullet()
 	: dir(), speed(0.f), range(0.f)
 {
@@ -74,7 +74,7 @@ void Bullet::Update(float dt)
 			{
 				if (GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
 				{
-					zombie->OnHitBullet(GetDamage());
+					zombie->OnHitBullet(GUN->GunGetDamage());
 					SetActive(false);
 					break;
 				}
