@@ -79,42 +79,7 @@ public:
 		gun[type]->magcount += a;
 	}
 
-	void SetFireMode() {
-		
-		int temp = gun[currentgun]->mode.firmodetemp;
-		temp++;
-		temp = temp % 3;
-		gun[currentgun]->mode.firmodetemp = temp;
-		switch (temp) {
-		case 0:
-			if (gun[currentgun]->mode.AUTO) {
-				gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
-			}
-			else {
-				gun[currentgun]->mode.firmodetemp = temp;
-				
-			}
-			break;
-		case 1:
-			if (gun[currentgun]->mode.BURST) {
-				gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
-			}
-			else {
-				gun[currentgun]->mode.firmodetemp = temp;
-
-			}
-			break;
-		case 2:
-			if (gun[currentgun]->mode.MANUAL) {
-				gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
-			}
-			else {
-				gun[currentgun]->mode.firmodetemp = temp;
-
-			}
-			break;
-		}
-	}
+	void SetFireMode();
 
 	int PrintCurrent() { return (int)currentgun; }
 	

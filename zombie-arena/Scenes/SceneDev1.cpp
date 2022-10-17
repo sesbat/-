@@ -138,6 +138,7 @@ void SceneDev1::Exit()
 	bullets.Reset();
 	for (auto bar : barricades)
 	{
+		objList.remove(bar);
 		delete bar;
 	}
 	barricades.clear();
