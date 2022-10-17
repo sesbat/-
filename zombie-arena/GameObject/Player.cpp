@@ -229,7 +229,7 @@ void Player::Fire()
 
 void Player::Reload()
 {
-	if (mag > 0) {
+	if (GUN->PrintMagCount() > 0) {
 		isReloading = true;
 		reloadTimer = 0.f;
 

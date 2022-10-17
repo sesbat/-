@@ -3,8 +3,8 @@
 Gun::Gun()
 {
 	gunstat* pistol = new gunstat();
-	pistol->currentammo=8;
-	pistol->maxammo=8;
+	pistol->currentammo = 8;
+	pistol->maxammo = 8;
 	pistol->magcount = 10;
 	pistol->unlocked = true;
 	pistol->relaodtimer = 0.5f;
@@ -16,7 +16,7 @@ Gun::Gun()
 	gun.insert({ TYPE::PISTOL,pistol });
 
 	gunstat* rifle = new gunstat();
-	rifle->currentammo =30;
+	rifle->currentammo = 30;
 	rifle->maxammo = 30;
 	rifle->magcount = 0;
 	rifle->unlocked = false;
@@ -29,7 +29,7 @@ Gun::Gun()
 
 	gun.insert({ TYPE::RIFLE,rifle });
 
-	gunstat* shotgun=new gunstat();
+	gunstat* shotgun = new gunstat();
 	shotgun->currentammo = 0;
 	shotgun->maxammo = 5;
 	shotgun->magcount = 0;
@@ -43,7 +43,7 @@ Gun::Gun()
 	gun.insert({ TYPE::SHOTGUN,shotgun });
 
 	currentgun = TYPE::PISTOL;
-	
+
 }
 
 Gun::~Gun()
@@ -51,5 +51,45 @@ Gun::~Gun()
 	for (auto v : gun) {
 		delete v.second;
 	}
-	gun.clear();	
+	gun.clear();
+}
+
+void Gun::SetFireMode()
+{
+
+
+	int temp = gun[currentgun]->mode.firmodetemp;
+	temp++;
+	temp = temp % 3;
+	gun[currentgun]->mode.firmodetemp = temp;
+	switch (temp) {
+	case 0:
+		if (gun[currentgun]->mode.AUTO) {
+			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+		}
+		else {
+			gun[currentgun]->mode.firmodetemp = temp;
+
+		}
+		break;
+	case 1:
+		if (gun[currentgun]->mode.BURST) {
+			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+		}
+		else {
+			gun[currentgun]->mode.firmodetemp = temp;
+
+		}
+		break;
+	case 2:
+		if (gun[currentgun]->mode.MANUAL) {
+			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+		}
+		else {
+			gun[currentgun]->mode.firmodetemp = temp;
+
+		}
+		break;
+	}
+
 }
