@@ -219,6 +219,17 @@ void SceneDev1::Update(float dt)
 		}
 	}
 
+	// test
+	if (player->GetActive())
+	{
+		UiDev1Mgr::SetDieImage(false);
+	}
+	if (InputMgr::GetKeyDown(Keyboard::R))
+	{
+		player->SetActive(false);
+		UiDev1Mgr::SetDieImage(true);
+	}
+
 	/*if (!(bullets.Get()->IsClear()))
 	{
 		
