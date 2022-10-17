@@ -18,6 +18,7 @@
 
 int SceneDev1::currRound = 0;
 int SceneDev1::barrcadecount = 0;
+int SceneDev1::zombieCount = 0;
 
 void OnCreateBullet(Bullet* bullet)
 {
