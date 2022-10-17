@@ -7,6 +7,8 @@
 
 SpriteObj* UiDev1Mgr::dieImage = new SpriteObj();
 TextObj* UiDev1Mgr::round = new TextObj();
+TextObj* UiDev1Mgr::goWaitingShop = new TextObj();
+float UiDev1Mgr::goWaitingShopCount = 6.f;
 
 UiDev1Mgr::UiDev1Mgr(Scene* scene)
 	:UiMgr(scene)
@@ -71,6 +73,11 @@ void UiDev1Mgr::Init()
 	waiting->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 80, Color::White, { 1920 - 500, 1080 - 250 });
 	uiObjList.push_back(waiting);
 
+
+	goWaitingShop->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 100, Color::White, { 1920 / 4 - 100, 1080 / 2 - 70 });
+	goWaitingShop->SetActive(false);
+	uiObjList.push_back(goWaitingShop);
+
 	UiMgr::Init();
 	
 }
@@ -84,12 +91,19 @@ void UiDev1Mgr::Reset()
 {
 	UiMgr::Reset();
 	waitingCount = 6.f;
+	goWaitingShopCount = 6.f;
+	goWaitingShop->SetActive(false);
 	waiting->SetActive(true);
 	SetZombieCount(0);
 }
 
 void UiDev1Mgr::Update(float dt)
 {
+	if (InputMgr::GetKeyDown(Keyboard::Space))
+	{
+		SetRound(false);
+	}
+
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
 
@@ -142,4 +156,11 @@ void UiDev1Mgr::SetRound(bool set)
 {
 	round->SetText("DAY  -  " + to_string(SceneDev1::GetCurrRound()));
 	round->SetActive(set);
+}
+
+void UiDev1Mgr::SetWaitingShop(bool set, float dt)
+{
+	goWaitingShop->SetActive(set);
+	goWaitingShopCount -= dt;
+	goWaitingShop->SetText("WAVE CLEAR! WAIT " + to_string((int)goWaitingShopCount) + " S...");
 }
