@@ -64,27 +64,10 @@ void SceneDev1::Init()
 	bullets.Init();
 
 
-	//ItemGenerator* itemGen = new ItemGenerator();
-	//itemGen->SetName("ItemGenerator");
-	//AddGameObj(itemGen);
-
 	for (auto obj : objList)
 	{
 		obj->Init();
 	}
-
-	
-	//cursor = new SpriteObj();
-	//cursor->SetTexture(*GetTexture("graphics/crosshair.png"));
-	//cursor->SetOrigin(Origins::MC);
-	//uiObjList.push_back(cursor);
-
-	//
-
-	//for (auto obj : uiObjList)
-	//{
-	//	obj->Init();
-	//}
 }
 
 void SceneDev1::Release()
@@ -145,7 +128,6 @@ void SceneDev1::Exit()
 	barricades.clear();
 	stack = 0;
 	made = false;
-	//FindGameObj("ItemGenerator")->Reset();
 
 	uiMgr->Reset();
 }
@@ -162,7 +144,6 @@ void SceneDev1::Update(float dt)
 		made = true;
 	}
 
-	//cout<<(int)GUN->PrintCurrentMode()<<endl;
 	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	
 
 	Vector2f dir;
@@ -231,6 +212,7 @@ void SceneDev1::Update(float dt)
 	{
 		UiDev1Mgr::SetDieImage(false);
 	}
+
 	if (InputMgr::GetKeyDown(Keyboard::E))
 	{
 		player->SetActive(false);
@@ -238,20 +220,6 @@ void SceneDev1::Update(float dt)
 		UiDev1Mgr::SetDieImage(true);
 	}
 
-	/*if (!(bullets.Get()->IsClear()))
-	{
-		
-	}*/
-		/*for (auto zombie : zombies)
-		{
-			if (barricade != nullptr&&zombie->GetGlobalBounds().intersects(barricade->GetSprite().getGlobalBounds()))
-			{
-				zombie->OnHitBarricade(10,dt);
-			}
-			else {
-				zombie->SetTrapped(false);
-			}
-		}*/
 	for (auto zombie : zombies)
 	{
 		for(auto bar : barricades)
