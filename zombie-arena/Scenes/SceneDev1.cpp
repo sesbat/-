@@ -56,7 +56,6 @@ void SceneDev1::Init()
 	objList.push_back(player);
 
 
-
 	bullets.OnCreate = OnCreateBullet;
 	bullets.Init();
 
@@ -132,6 +131,11 @@ void SceneDev1::Exit()
 
 	player->Reset();
 	bullets.Reset();
+	for (auto bar : barricades)
+	{
+		barricades.remove(bar);
+	}
+	barricades.clear();
 
 	//FindGameObj("ItemGenerator")->Reset();
 
@@ -142,7 +146,7 @@ void SceneDev1::Update(float dt)
 {
 	Scene::Update(dt);
 
-	GUN->Test();
+	cout<<(int)GUN->PrintCurrentMode()<<endl;
 	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	
 
 	Vector2f dir;
@@ -160,7 +164,7 @@ void SceneDev1::Update(float dt)
 	realcam.y = camPoslen.y + player->GetPos().y;
 
 	worldView.setCenter(realcam);
-	((UiDev1Mgr*)uiMgr)->SetBulletCount(player->GetCurrnetbulletCount(), player->GetMagCount());
+	((UiDev1Mgr*)uiMgr)->SetBulletCount(GUN->PrintCurrentammo(),GUN->PrintMagCount());
 
 	if (InputMgr::GetKeyDown(Keyboard::Escape))
 	{
@@ -173,6 +177,16 @@ void SceneDev1::Update(float dt)
 	if (InputMgr::GetKeyDown(Keyboard::Space))
 	{
 		SCENE_MGR->ChangeScene(Scenes::Dev2);
+	}
+
+	if (InputMgr::GetKeyDown(Keyboard::Num1)) {
+		GUN->Change(0);
+	}
+	else if (InputMgr::GetKeyDown(Keyboard::Num2)) {
+		GUN->Change(1);
+	}
+	else if (InputMgr::GetKeyDown(Keyboard::Num3)) {
+		GUN->Change(2);
 	}
 	
 	zombieCount = zombies.size();
@@ -214,9 +228,11 @@ void SceneDev1::Update(float dt)
 		for(auto bar : barricades)
 		if (bar != nullptr && zombie->GetGlobalBounds().intersects(bar->GetSprite().getGlobalBounds()))
 		{
-			zombie->OnHitBarricade(10, dt);
-			bar->OnHitZombie(10,dt);
-			bar->SetActive(false);
+			if(bar->GetActive()) 
+			{
+				zombie->OnHitBarricade(10, dt);
+				bar->OnHitZombie(10, dt);
+			}
 		}
 		else {
 			zombie->SetTrapped(false);
@@ -330,6 +346,7 @@ void SceneDev1::CreateBarricade()
 	temp->SetPos(player->GetPos());
 	temp->SetPlayer(player);
 	temp->SetOrigin(Origins::MC);
+	temp->SetActive(true);
 	objList.push_back(temp);
 	barricades.push_back(temp);
 }

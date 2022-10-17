@@ -11,6 +11,12 @@ protected:
 	TextObj* bulletcount;
 	TextObj* textZombieCount;
 	SpriteObj* cursor;
+
+	SpriteObj* rifleicon;
+	SpriteObj* pistolicon;
+	SpriteObj* shotgun;
+	//현재총 아이콘생성
+	
 public:
 	UiDev1Mgr(Scene* scene);
 	~UiDev1Mgr();
