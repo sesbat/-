@@ -16,6 +16,8 @@ protected:
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
 	//현재총 아이콘생성
+
+	static SpriteObj* dieImage;
 	
 public:
 	UiDev1Mgr(Scene* scene);
@@ -29,6 +31,6 @@ public:
 
 	void SetZombieCount(int count);
 	void SetBulletCount(int current, int mag);
-
+	static void SetDieImage(bool set);
 };
 

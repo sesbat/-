@@ -5,6 +5,8 @@
 #include "../GameObject/Zombie.h"
 #include "../Framework/Framework.h"
 
+SpriteObj* UiDev1Mgr::dieImage = new SpriteObj();
+
 UiDev1Mgr::UiDev1Mgr(Scene* scene)
 	:UiMgr(scene)
 {
@@ -49,6 +51,11 @@ void UiDev1Mgr::Init()
 	shotgun->SetOrigin(Origins::MC);
 	shotgun->SetPos({ 100,850 - 60 });
 	
+
+	dieImage->SetAll(*RESOURCE_MGR->GetTexture("graphics/DieImage.png"), {1920 / 2, 1080 / 2}, Origins::MC);
+	dieImage->SetActive(false);
+	uiObjList.push_back(dieImage);
+
 	UiMgr::Init();
 	
 }
@@ -94,4 +101,9 @@ void UiDev1Mgr::SetZombieCount(int count)
 void UiDev1Mgr::SetBulletCount(int current, int mag)
 {
 	bulletcount->SetText(to_string(current) + "/" + to_string(mag));
+}
+
+void UiDev1Mgr::SetDieImage(bool set)
+{
+	dieImage->SetActive(set);
 }
