@@ -8,7 +8,7 @@ Gun::Gun()
 	pistol->magcount = 10;
 	pistol->unlocked = true;
 	pistol->relaodtimer = 0.5f;
-	pistol->mode.AUTO = true;
+	pistol->mode.AUTO = false;
 	pistol->mode.BURST = false;
 	pistol->mode.MANUAL = true;
 	pistol->mode.CUR = firemode::Gunmode::MANUAL;
@@ -69,6 +69,7 @@ void Gun::SetFireMode()
 	case 0:
 		if (gun[currentgun]->mode.AUTO) {
 			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+			
 		}
 		else {
 			gun[currentgun]->mode.firmodetemp = temp;
@@ -78,6 +79,7 @@ void Gun::SetFireMode()
 	case 1:
 		if (gun[currentgun]->mode.BURST) {
 			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+			
 		}
 		else {
 			gun[currentgun]->mode.firmodetemp = temp;
@@ -87,6 +89,7 @@ void Gun::SetFireMode()
 	case 2:
 		if (gun[currentgun]->mode.MANUAL) {
 			gun[currentgun]->mode.CUR = (firemode::Gunmode)temp;
+		
 		}
 		else {
 			gun[currentgun]->mode.firmodetemp = temp;
