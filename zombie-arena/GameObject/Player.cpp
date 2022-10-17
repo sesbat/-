@@ -230,23 +230,14 @@ void Player::Fire()
 		Bullet* bullet2 = bulletPool->Get();
 		bullet1->SetBackground(background);
 		bullet2->SetBackground(background);
-		while (1)
-		{
-			Vector2f randomShot1 = Utils::RandomOutCirclePoint();
-			Vector2f randomShot2 = Utils::RandomOutCirclePoint();
-			Vector2f randomShot3 = Utils::RandomOutCirclePoint();
 
-			cout << Utils::Angle(randomShot1, look) << endl;
-			if ((int)Utils::Angle(randomShot1, look) <20&& 
-				(int)Utils::Angle(randomShot1, look) >abs((int)Utils::Angle(look)))
-			{
-				bullet1->Fire(startPos, randomShot1, 1000, 500);
-				break;
-			}
-		}
-		
-		
-
+		float temp = atan2(look.y,look.x);
+		float F1 = temp + M_PI / 12;
+		Vector2f randomShot1 = { cos(F1),sin(F1) };
+		float F2 = temp - M_PI / 12;
+		Vector2f randomShot2 = { cos(F2),sin(F2) };
+		bullet1->Fire(startPos, randomShot1, 1000, 500);
+		bullet2->Fire(startPos, randomShot2, 1000, 500);
 	}
 	SOUND_MGR->Play("sound/shoot.wav", false);
 
