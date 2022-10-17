@@ -33,12 +33,19 @@ void UiDev1Mgr::Init()
 	Roundtext->GetSfmlText().setPosition({ (float)FRAMEWORK->GetWindowSize().x/2,50.f});
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
 	uiObjList.push_back(Roundtext);
-
+		
 	bulletcount = new TextObj();
 	bulletcount->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
 	bulletcount->GetSfmlText().setCharacterSize(75);
 	bulletcount->GetSfmlText().setPosition({ 50,850 });
 	uiObjList.push_back(bulletcount);
+
+	mode = new TextObj();
+	mode->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
+	mode->GetSfmlText().setCharacterSize(75);
+	mode->GetSfmlText().setPosition({bulletcount->GetPos().x+40,(float)FRAMEWORK->GetWindowSize().y-400});
+	mode->SetText( GUN->PrintStringCurrentMode());
+	uiObjList.push_back(mode);
 
 	cursor = new SpriteObj();
 	cursor->SetTexture(*RESOURCE_MGR->GetTexture("graphics/crosshair.png"));
@@ -106,6 +113,7 @@ void UiDev1Mgr::Update(float dt)
 
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
+	mode->SetText(GUN->PrintStringCurrentMode());
 
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());

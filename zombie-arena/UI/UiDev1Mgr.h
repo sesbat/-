@@ -18,6 +18,7 @@ protected:
 	SpriteObj* shotgun;
 
 	TextObj* waiting;
+	TextObj* mode;
 	float waitingCount = 6.f;
 
 public:
