@@ -46,6 +46,13 @@ void UiDev1Mgr::Init()
 	mode->SetText( GUN->PrintStringCurrentMode());
 	uiObjList.push_back(mode);
 
+	baricount = new TextObj();
+	baricount->SetFont(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"));
+	baricount->GetSfmlText().setCharacterSize(75);
+	baricount->GetSfmlText().setPosition({ 550,850 });
+	baricount->SetText("barricadecount="+to_string(SceneDev1::GetBarricadecount()));
+	uiObjList.push_back(baricount);
+
 	cursor = new SpriteObj();
 	cursor->SetTexture(*RESOURCE_MGR->GetTexture("graphics/crosshair.png"));
 	cursor->SetOrigin(Origins::MC);
@@ -117,6 +124,7 @@ void UiDev1Mgr::Update(float dt)
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
 	mode->SetText(GUN->PrintStringCurrentMode());
+	baricount->SetText("barricadecount=" + to_string(SceneDev1::GetBarricadecount()));
 
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
