@@ -10,6 +10,7 @@
 #include "../Scenes/SceneMgr.h"
 #include "../UI/UiDev1Mgr.h"
 #include "../Framework/SoundMgr.h"
+#include <math.h>
 
 int Player::mag = 10;
 int Player::money = 200;
@@ -157,7 +158,7 @@ void Player::Update(float dt)
 		GUN->SetFireMode();
 	}
 
-	//firemode �Ѱܼ� ���̾��忡 �°� ���?
+	//firemode �Ѱܼ� ���̾��忡 �°� ���?
 	
 	switch ((int)GUN->PrintCurrentMode())
 	{
@@ -229,8 +230,22 @@ void Player::Fire()
 		Bullet* bullet2 = bulletPool->Get();
 		bullet1->SetBackground(background);
 		bullet2->SetBackground(background);
-		bullet1->Fire(startPos, { look.x + 10,look.y },1000, 500);
-		bullet2->Fire(startPos, { look.x - 10,look.y }, 1000, 500);
+		while (1)
+		{
+			Vector2f randomShot1 = Utils::RandomOutCirclePoint();
+			Vector2f randomShot2 = Utils::RandomOutCirclePoint();
+			Vector2f randomShot3 = Utils::RandomOutCirclePoint();
+
+			cout << Utils::Angle(randomShot1, look) << endl;
+			if ((int)Utils::Angle(randomShot1, look) <20&& 
+				(int)Utils::Angle(randomShot1, look) >abs((int)Utils::Angle(look)))
+			{
+				bullet1->Fire(startPos, randomShot1, 1000, 500);
+				break;
+			}
+		}
+		
+		
 
 	}
 	SOUND_MGR->Play("sound/shoot.wav", false);
