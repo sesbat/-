@@ -99,10 +99,15 @@ void UiDev1Mgr::Reset()
 
 void UiDev1Mgr::Update(float dt)
 {
-	if (InputMgr::GetKeyDown(Keyboard::Space))
-	{
+	//if (InputMgr::GetKeyDown(Keyboard::Space))
+	//{
+	//	SetRound(false);
+	//}
+
+	if (dieImage->GetActive())
+		SetRound(true);
+	else
 		SetRound(false);
-	}
 
 	UiMgr::Update(dt);
 	Roundtext->SetText("Round : " + to_string(SceneDev1::GetCurrRound()));
