@@ -331,11 +331,18 @@ void SceneDev1::CreateZombies(int count)
 
 		zombie->Init(player);
 
-		point.x = Utils::RandomRange(-1.0f, 1.0f);
-		point.y = Utils::RandomRange(-1.0f, 1.0f);
-		point = Utils::Normalize(point);
-		point *= Utils::RandomRange(0.f, 500.f);
-		zombie->SetPos(point);
+		while(1) {
+			point.x = Utils::RandomRange(-1.0f, 1.0f);
+			point.y = Utils::RandomRange(-1.0f, 1.0f);
+			point = Utils::Normalize(point);
+			point *= Utils::RandomRange(0.f, 800.f);
+			if (Utils::Distance(point, player->GetPos()) >= 300)
+			{
+				zombie->SetPos(point);
+				break;
+			}
+		}
+
 
 		zombie->SetBackground(background);
 		
