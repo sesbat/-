@@ -12,7 +12,7 @@
 #include "../Framework/SoundMgr.h"
 
 int Player::mag = 10;
-int Player::money = 0;
+int Player::money = 200;
 
 
 Player::Player()
