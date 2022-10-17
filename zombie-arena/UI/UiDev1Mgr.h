@@ -15,10 +15,8 @@ protected:
 	SpriteObj* rifleicon;
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
-	//현재총 아이콘생성
-
 	static SpriteObj* dieImage;
-	
+
 public:
 	UiDev1Mgr(Scene* scene);
 	~UiDev1Mgr();
