@@ -132,19 +132,20 @@ void UiETCShop::Update(float dt)
 		cursor->GetPos().x >= buy->GetPos().x - buy->GetSize().x / 2 &&
 		cursor->GetPos().x <= buy->GetPos().x + buy->GetSize().x / 2)
 	{
-		if (InputMgr::GetMouseButton(Mouse::Left))
+		if (InputMgr::GetMouseButton(Mouse::Left)&&(buyBarricade*100)<=Player::GetMoney())
 		{
 			buy->SetTexture(*RESOURCE_MGR->GetTexture("graphics/buyClick.png"));
 		}
-		if (InputMgr::GetMouseButtonUp(Mouse::Left))
+		if (InputMgr::GetMouseButtonUp(Mouse::Left) && (buyBarricade * 100) <= Player::GetMoney())
 		{
 			buy->SetTexture(*RESOURCE_MGR->GetTexture("graphics/buy.png"));
 
 			if (buyBarricade > 0)
 			{
+				Player::SetMoney(-1*(Player::GetMoney() - buyBarricade * 100));
+				
 				buyBarricade = 0;
-				// 골드 변경
-				// 아이템 개수 변경
+				
 			}
 		}
 	}

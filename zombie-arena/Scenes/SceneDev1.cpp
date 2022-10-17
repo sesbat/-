@@ -133,7 +133,7 @@ void SceneDev1::Exit()
 	bullets.Reset();
 	for (auto bar : barricades)
 	{
-		barricades.remove(bar);
+		delete bar;
 	}
 	barricades.clear();
 
@@ -146,7 +146,7 @@ void SceneDev1::Update(float dt)
 {
 	Scene::Update(dt);
 
-	cout<<(int)GUN->PrintCurrentMode()<<endl;
+	//cout<<(int)GUN->PrintCurrentMode()<<endl;
 	sf::Vector2f mouseworldPos = FRAMEWORK->GetWindow().mapPixelToCoords((Vector2i)InputMgr::GetMousePos(), worldView);	
 
 	Vector2f dir;
