@@ -11,13 +11,20 @@ class UiETCShop : public UiMgr
 	TextObj* barricadeName;
 	TextObj* textBarricade;
 
+	TextObj* price;
+	TextObj* allPrice;
+
 	SpriteObj* shopBackground;
 	SpriteObj* cursor;
+	SpriteObj* edge;
 
 	SpriteObj* barricade;
 
 	SpriteObj* add;
 	SpriteObj* sub;
+	SpriteObj* buy;
+
+	int buyBarricade = 0;
 
 public:
 	UiETCShop(Scene* scene);
@@ -30,6 +37,5 @@ public:
 	virtual void Draw(RenderWindow& window) override;
 
 	void SetGold(int gold);
-	static int buyBarricade;
 };
 

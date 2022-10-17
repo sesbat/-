@@ -1,3 +1,4 @@
+#include "../Framework/Utils.h"
 #include "TextObj.h"
 
 TextObj::TextObj()
@@ -35,6 +36,11 @@ void TextObj::SetAll(Font& font, string str, int size, Color color, Vector2f pos
 void TextObj::SetColor(Color color)
 {
 	text.setFillColor(color);
+}
+
+void TextObj::SetOrigin(Origins origin)
+{
+	Utils::SetOrigin(text, origin);
 }
 
 const string& TextObj::GetText() const

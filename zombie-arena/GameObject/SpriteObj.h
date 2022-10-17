@@ -22,6 +22,7 @@ public:
 	FloatRect GetGlobalBounds() const;
 	Sprite GetSprite() { return sprite; }
 	virtual void SetPos(const Vector2f& pos) override;
+	void SetAll(Texture& tex, const Vector2f& pos, Origins origin);
 
 };
 

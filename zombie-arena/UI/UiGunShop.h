@@ -2,6 +2,7 @@
 #include "UiMgr.h"
 #include "../GameObject/TextObj.h"
 #include "../GameObject/SpriteObj.h"
+#include <list>
 
 class UiGunShop : public UiMgr
 {
@@ -9,13 +10,12 @@ protected:
 	string formatGold = "Gold  :  ";
 	TextObj* textGold;
 
-	//test
-	//string formatGold = "Magazine  :  ";
-	TextObj* textMagazine;
-
 	TextObj* pistolName;
 	TextObj* shotGunName;
 	TextObj* assaultName;
+
+	TextObj* assaultUnLock;
+	TextObj* shotGunUnLock;
 
 	SpriteObj* shopBackground;
 	SpriteObj* cursor;
@@ -24,10 +24,20 @@ protected:
 	SpriteObj* shotGun;
 	SpriteObj* assaultRifle;
 
-	SpriteObj* locking;
+	vector<SpriteObj*> locking;
+	vector<SpriteObj*> addMag;
+	vector<SpriteObj*> subMag;
+	vector<SpriteObj*> buy;
+	vector<SpriteObj*> magazineEdge;
+	vector<TextObj*> textMagazine;
+	vector<TextObj*> curPrice;
+	vector<TextObj*> allPrice;
 
-	SpriteObj* addMag;
-	SpriteObj* subMag;
+	int buyPistolMagazine;
+	int buyAssaultMagazine;
+	int buyShotGunMagazine;
+
+	int buyCount = 0;
 
 public:
 	UiGunShop(Scene* scene);
@@ -40,7 +50,5 @@ public:
 	virtual void Draw(RenderWindow& window) override;
 
 	void SetGold(int gold);
-
-	static int buyMagazine;
 };
 
