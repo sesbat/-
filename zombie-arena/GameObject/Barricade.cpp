@@ -50,25 +50,31 @@ void Barricade::SetPos(const Vector2f& pos)
 
 void Barricade::Init()
 {
-	SpriteObj::Init();
 }
 
 void Barricade::Update(float dt)
 {
+	barricadeDelay -= dt;
+	if(barricadeDelay<=0.f)
+	{
+		barricadeDelay = 2.f;
+	}
 	if (hp <= 0)
 	{
 		SetActive(false);
 	}
-	SpriteObj::Update(dt);
+		SpriteObj::Update(dt);
 }
 
 void Barricade::Release()
 {
-	SpriteObj::Release();
 }
 
 void Barricade::Draw(RenderWindow& window)
 {
-	window.draw(barricadeHpBar);
+	if (GetActive())
+	{ 
+		window.draw(barricadeHpBar);
+	}
 	SpriteObj::Draw(window);
 }

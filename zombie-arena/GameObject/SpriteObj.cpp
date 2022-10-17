@@ -13,6 +13,7 @@ SpriteObj::~SpriteObj()
 
 void SpriteObj::Draw(RenderWindow& window)
 {
+	if(enabled)
 	window.draw(sprite);
 }
 

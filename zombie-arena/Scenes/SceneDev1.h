@@ -21,7 +21,6 @@ protected:
 	SpriteObj* cursor;
 	
 	list<Barricade*> barricades;
-	SpriteObj* barricade;
 
 	ObjectPool<Bullet> bullets;
 
