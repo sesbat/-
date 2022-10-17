@@ -76,6 +76,7 @@ void Bullet::Update(float dt)
 				{
 					zombie->OnHitBullet(GUN->GunGetDamage());
 					SetActive(false);
+					//zombie->SetPos({ -2000,-2000 });
 					break;
 				}
 			}

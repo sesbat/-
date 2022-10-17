@@ -237,11 +237,13 @@ void SceneDev1::Update(float dt)
 	}
 	for (auto zombie : zombies)
 	{
-		if (player->GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
-		{
-			player->SetActive(false);
-			UiDev1Mgr::SetRound(true);
-			UiDev1Mgr::SetDieImage(true);
+		if (zombie->GetActive()) {
+			if (player->GetGlobalBounds().intersects(zombie->GetGlobalBounds()))
+			{
+				player->SetActive(false);
+				UiDev1Mgr::SetRound(true);
+				UiDev1Mgr::SetDieImage(true);
+			}
 		}
 	}
 		
