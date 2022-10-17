@@ -49,6 +49,7 @@ public:
 	void CreateZombies(int count);
 	void CreateBarricade();
 
+	static int GetBarricadecount() { return barrcadecount; }
 	static void AddBaricount(int a) { barrcadecount+=a; }
 	static int GetZombiecount() { return zombieCount; }
 	list<Zombie*>* GetZombieList() { return &zombies; }

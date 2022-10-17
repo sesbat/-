@@ -16,7 +16,8 @@ protected:
 	SpriteObj* rifleicon;
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
-
+	
+	TextObj* baricount;
 	TextObj* round;
 	TextObj* waiting;
 	TextObj* mode;

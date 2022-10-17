@@ -56,6 +56,8 @@ void Player::Reset()
 
 void Player::Update(float dt)
 {
+	cout << Utils::Angle(look) << endl;
+
 	Scene* scene = SCENE_MGR->GetCurrScene();
 	SpriteObj::Update(dt);
 
