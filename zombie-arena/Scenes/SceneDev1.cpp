@@ -142,7 +142,8 @@ void SceneDev1::Exit()
 		delete bar;
 	}
 	barricades.clear();
-
+	stack = 0;
+	made = false;
 	//FindGameObj("ItemGenerator")->Reset();
 
 	uiMgr->Reset();
