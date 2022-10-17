@@ -17,6 +17,9 @@ protected:
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
 
+	TextObj* waiting;
+	float waitingCount = 6.f;
+
 public:
 	UiDev1Mgr(Scene* scene);
 	~UiDev1Mgr();

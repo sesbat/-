@@ -154,7 +154,8 @@ void SceneDev1::Update(float dt)
 	Scene::Update(dt);
 	
 	stack += dt;
-	if (stack >= 5.f&&!made)
+
+	if (stack >= 6.f&&!made)
 	{
 		CreateZombies(10);
 		made = true;

@@ -68,6 +68,10 @@ void UiDev1Mgr::Init()
 	round->SetActive(false);
 	uiObjList.push_back(round);
 
+	waiting = new TextObj();
+	waiting->SetAll(*RESOURCE_MGR->GetFont("fonts/zombiecontrol.ttf"), "", 80, Color::White, { 1920 - 500, 1080 - 250 });
+	uiObjList.push_back(waiting);
+
 	UiMgr::Init();
 	
 }
@@ -80,6 +84,8 @@ void UiDev1Mgr::Release()
 void UiDev1Mgr::Reset()
 {
 	UiMgr::Reset();
+	waitingCount = 6.f;
+	waiting->SetActive(true);
 	SetZombieCount(0);
 }
 
@@ -90,6 +96,16 @@ void UiDev1Mgr::Update(float dt)
 	Vector2f worldMousePos = parentScene->
 		ScreenToUiPos((Vector2i)InputMgr::GetMousePos());
 	cursor->SetPos(worldMousePos);
+
+	if (waitingCount >= 0.f)
+	{
+		waiting->SetText("WATING : " + to_string((int)waitingCount));
+		waitingCount -= dt;
+	}
+	else
+	{
+		waiting->SetActive(false);
+	}
 }
 
 void UiDev1Mgr::Draw(RenderWindow& window)
