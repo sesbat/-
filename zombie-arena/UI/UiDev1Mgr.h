@@ -16,7 +16,6 @@ protected:
 	SpriteObj* rifleicon;
 	SpriteObj* pistolicon;
 	SpriteObj* shotgun;
-	static SpriteObj* dieImage;
 
 public:
 	UiDev1Mgr(Scene* scene);
@@ -31,5 +30,8 @@ public:
 	void SetZombieCount(int count);
 	void SetBulletCount(int current, int mag);
 	static void SetDieImage(bool set);
+	static SpriteObj* dieImage;
+	static TextObj* round;
+	static void SetRound(bool set);
 };
 

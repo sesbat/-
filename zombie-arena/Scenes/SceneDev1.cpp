@@ -230,6 +230,7 @@ void SceneDev1::Update(float dt)
 	if (InputMgr::GetKeyDown(Keyboard::E))
 	{
 		player->SetActive(false);
+		UiDev1Mgr::SetRound(true);
 		UiDev1Mgr::SetDieImage(true);
 	}
 
