@@ -229,7 +229,7 @@ void Player::Fire()
 
 void Player::Reload()
 {
-	if (GUN->PrintMagCount() > 0) {
+	if (GUN->PrintMagCount() > 0&&GUN->PrintCurrentammo() != GUN->PrintCurrentMaxAmmo()) {
 		isReloading = true;
 		reloadTimer = 0.f;
 
