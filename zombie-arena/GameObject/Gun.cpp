@@ -32,9 +32,10 @@ Gun::Gun()
 	gun.insert({ TYPE::RIFLE,rifle });
 
 	gunstat* shotgun = new gunstat();
-	shotgun->currentammo = 0;
+	shotgun->currentammo = 10;
 	shotgun->maxammo = 5;
 	shotgun->magcount = 0;
+	shotgun->unlocked = true;
 	shotgun->mode.AUTO = false;
 	shotgun->mode.BURST = false;
 	shotgun->mode.MANUAL = true;
