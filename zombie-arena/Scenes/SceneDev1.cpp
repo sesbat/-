@@ -140,7 +140,7 @@ void SceneDev1::Update(float dt)
 
 	if (stack >= 6.f&&!made)
 	{
-		CreateZombies(10);
+		CreateZombies(2 + 2 * currRound);
 		made = true;
 	}
 
