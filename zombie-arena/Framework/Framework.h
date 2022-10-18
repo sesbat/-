@@ -16,8 +16,6 @@ protected:
 	Time deltaTime;
 	float timeScale;
 	Gun gun;
-
-
 public:
 	Framework();
 	virtual ~Framework();

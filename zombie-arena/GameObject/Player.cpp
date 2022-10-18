@@ -165,14 +165,14 @@ void Player::Update(float dt)
 	switch ((int)GUN->PrintCurrentMode())
 	{
 	case 2:
-		if (fireTimer > intervalManual &&
+		if (fireTimer > GUN->PrintGetFireSpeed() &&
 			InputMgr::GetMouseButtonDown(Mouse::Button::Left))
 		{
 			Fire();
 		}
 		break;
 	case 1:
-		if (fireTimer > intervalSemiauto &&
+		if (fireTimer > GUN->PrintGetFireSpeed() &&
 			(isSemiFiring || InputMgr::GetMouseButtonDown(Mouse::Button::Left)))
 		{
 			if (semiCount == 0)
@@ -195,7 +195,7 @@ void Player::Update(float dt)
 		}
 		break;
 	case 0:
-		if (fireTimer > intervalAuto &&
+		if (fireTimer > GUN->PrintGetFireSpeed() &&
 			InputMgr::GetMouseButton(Mouse::Button::Left))
 		{
 			Fire();
