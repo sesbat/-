@@ -1,9 +1,7 @@
 #pragma once
 #include "Scene.h"
-#include "../GameObject/Object.h"
 
 class SpriteObj;
-class Object;
 
 class SceneGunShop : public Scene
 {
