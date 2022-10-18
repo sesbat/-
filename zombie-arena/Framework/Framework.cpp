@@ -45,7 +45,7 @@ bool Framework::Init(int width, int height)
     DATATABLE_MGR->Init();
     SCENE_MGR->Init();
     InputMgr::Init();
-
+    GUN->Init();
     return true;
 }
 
