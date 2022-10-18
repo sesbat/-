@@ -47,26 +47,14 @@ public:
 	~Gun();
 
 
-	void Change(int a) {
-		if (gun[(TYPE)a]->unlocked)
-			currentgun = (TYPE)a;
-	}
+	void Change(int a);
 	int PrintCurrentammo() {
 		return gun[currentgun]->currentammo;
 	}
 	int PrintMagCount() {
 		return gun[currentgun]->magcount;
 	}
-	string PrintStringCurrentMode() {
-		switch (gun[currentgun]->mode.CUR) {
-		case firemode::Gunmode::AUTO:
-			return "Auto";
-		case firemode::Gunmode::BURST:
-			return "Burst";
-		case firemode::Gunmode::MANUAL:
-			return "Manual";
-		}
-	}
+	string PrintStringCurrentMode();
 
 	firemode::Gunmode PrintCurrentMode() {
 		return gun[currentgun]->mode.CUR;
@@ -75,10 +63,7 @@ public:
 		gun[currentgun]->currentammo--;
 
 	}
-	void Reload() {
-		gun[currentgun]->magcount--;
-		gun[currentgun]->currentammo = gun[currentgun]->maxammo;
-	}
+	void Reload();
 	void UnlockGun(int type) {
 		gun[(TYPE)type]->unlocked = true;
 	}

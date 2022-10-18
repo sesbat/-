@@ -57,6 +57,30 @@ Gun::~Gun()
 	gun.clear();
 }
 
+void Gun::Change(int a)
+{
+	if (gun[(TYPE)a]->unlocked)
+		currentgun = (TYPE)a;
+}
+
+string Gun::PrintStringCurrentMode()
+{
+	switch (gun[currentgun]->mode.CUR) {
+	case firemode::Gunmode::AUTO:
+		return "Auto";
+	case firemode::Gunmode::BURST:
+		return "Burst";
+	case firemode::Gunmode::MANUAL:
+		return "Manual";
+	}
+}
+
+void Gun::Reload()
+{
+	gun[currentgun]->magcount--;
+	gun[currentgun]->currentammo = gun[currentgun]->maxammo;
+}
+
 void Gun::SetFireMode()
 {
 
