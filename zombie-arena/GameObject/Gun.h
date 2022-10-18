@@ -36,6 +36,7 @@ protected:
 		bool unlocked;
 		float relaodtimer;
 		int damage;
+		float firespeed;
 		firemode mode;
 	};
 
@@ -46,6 +47,9 @@ public:
 	Gun();
 	~Gun();
 
+	float PrintGetFireSpeed() {
+		return gun[currentgun]->firespeed;
+	}
 
 	void Change(int a);
 	int PrintCurrentammo() {
@@ -83,6 +87,8 @@ public:
 	int PrintCurrent() { return (int)currentgun; }
 
 	int GunGetDamage() { return gun[currentgun]->damage; }
+
+	void Init();
 
 };
 
