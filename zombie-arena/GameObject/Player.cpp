@@ -160,7 +160,7 @@ void Player::Update(float dt)
 		GUN->SetFireMode();
 	}
 
-	//firemode �Ѱܼ� ���̾��忡 �°� ���?
+	//firemode �Ѱܼ� ���̾��忡 �°� ���?
 	
 	switch ((int)GUN->PrintCurrentMode())
 	{
